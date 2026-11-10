@@ -1,14 +1,13 @@
 github_users:
-  - torvalds
-  - alshedivat
+  - Tanushka-Sonde
 
 repo_description_lines_max: 2
 
 github_repos:
-  - alshedivat/al-folio
-  - jekyll/jekyll
-  - twbs/bootstrap
-  - jquery/jquery
-  - FortAwesome/Font-Awesome
-  - mathjax/MathJax
-  - jpswalsh/academicons
+  - Tanushka-Sonde/Tinyinfer
+  - Tanushka-Sonde/alpha-research-framework
+  - Tanushka-Sonde/lunar-descent-optical-flow
+  - Tanushka-Sonde/Multi-Parametric-Retinal-Diagnostics
+  - Tanushka-Sonde/Prompted_Segmentation_for_Drywall_QA
+  - Tanushka-Sonde/Small-Multimodal-Experiments
+  - IITGN-Robotics/Addverb-Heal-Teleop

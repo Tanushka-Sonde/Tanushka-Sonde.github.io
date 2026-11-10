@@ -1,0 +1,34 @@
+/*******************************************************************************
+ * Site-specific overrides (loaded last from assets/css/main.scss).
+ * One calm accent colour (indigo) in both light and dark mode.
+ ******************************************************************************/
+
+:root {
+  --global-theme-color: #4f46e5; // indigo-600
+  --global-hover-color: #4f46e5;
+  --global-code-bg-color: rgba(79, 70, 229, 0.05);
+}
+
+html[data-theme="dark"] {
+  --global-theme-color: #a5b4fc; // indigo-300, readable on the dark background
+  --global-hover-color: #a5b4fc;
+  --global-hover-text-color: #1c1c1d;
+}
+
+// Same aspect ratio for every project card image.
+.projects .card-img-top,
+.projects .card img {
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  object-fit: cover;
+}
+
+// Project card titles: keep the original casing and a readable size.
+.projects .card-title {
+  text-transform: none;
+  font-size: 1.15rem;
+}
+
+.projects h2.category {
+  text-transform: none;
+}
