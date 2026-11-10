@@ -1,14 +1,13 @@
 ---
 layout: post
 title: "Reconstructing a lunar descent trajectory with optical flow"
-description: TODO
 tags: [computer-vision, optical-flow]
 categories: [notes]
 ---
 
-<!-- Outline only. Write the text yourself. Source: project page _projects/sift-optical-flow-lunar-descent.md (bullets from MasterResume.tex). -->
+<!-- Outline only: write the text yourself. Points taken from the project's resume bullets. -->
 
-- TODO: outline point from bullet 1 of sift-optical-flow-lunar-descent
-- TODO: outline point from bullet 2 of sift-optical-flow-lunar-descent
-- TODO: outline point from bullet 3 of sift-optical-flow-lunar-descent
-- TODO: outline point from bullet 4 of sift-optical-flow-lunar-descent
+- Vectorized Shi-Tomasi corner scoring using integral-image structure tensors over 588x432 Chang'e-5 descent frames, accelerating feature selection 45x versus per-pixel loops.
+- Developed iterative Lucas-Kanade optical flow with bilinear warping, shrinking error on 2.4 px shifts from 1.67 px to 0.011 px against one-shot updates.
+- Seeded KLT tracking with SIFT correspondences for large inter-frame motion, recovering 10 px and 33 px displacements where zero-initialized solvers stalled below 2.6 px.
+- Reconstructed a metric 3D lander trajectory from 143 image pairs via robust similarity fits, resolving a 168 s flight, a 100 m hover and 25 timing gaps.

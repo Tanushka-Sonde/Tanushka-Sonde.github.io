@@ -1,24 +1,23 @@
 ---
 layout: page
 title: "Multi-Parametric Retinal Diagnostics: Reproduction and Extension"
-description: "Project course · Prof. Prabhat Munshi" # TODO: replace with a one-line description (<120 chars) from MasterResume.tex
+description: "Reproduced a physics-based OCT classifier and stress-tested it with cross-scanner validation on 3 datasets."
 category: Research
 importance: 2
-img: assets/img/projects/placeholder.svg # TODO: optional thumbnail in assets/img/projects/
+img: assets/img/projects/placeholder.svg # optional: replace with a thumbnail in assets/img/projects/
 date_range: "Aug – Nov 2026"
 github: https://github.com/Tanushka-Sonde/Multi-Parametric-Retinal-Diagnostics
 ---
 
-**Aug – Nov 2026** · Project course · Prof. Prabhat Munshi
+**Aug – Nov 2026** · Project Course, IIT Gandhinagar, Prof. Prabhat Munshi
 
 <a class="btn btn-sm z-depth-0" role="button" href="https://github.com/Tanushka-Sonde/Multi-Parametric-Retinal-Diagnostics"><i class="fa-brands fa-github"></i> GitHub</a>
 
 ## What I did
 
-<!-- TODO: paste the 4 bullets verbatim from MasterResume.tex -->
-- TODO
-- TODO
-- TODO
-- TODO
+- Reproduced a **deterministic physics-based OCT classification pipeline** from scratch on a 517-scan benchmark, matching the original paper's published results across all four diagnostic classes.
+- Extended the pipeline with **anatomically-informed band and sector features** built from retinal layer segmentation, evaluated across 3 independent OCT datasets collected on different scanners.
+- Diagnosed dataset confounds behind the original paper's claims through systematic **cross-scanner validation** and permutation-based feature importance audits on held-out patients.
+- Benchmarked the interpretable pipeline against a **fine-tuned CNN baseline** to quantify the real accuracy-interpretability tradeoff between physics-based and deep features.
 
-**Tech:** TODO
+**Tech:** OCT, retinal layer segmentation, permutation feature importance, CNN baseline

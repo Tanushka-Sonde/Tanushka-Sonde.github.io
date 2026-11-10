@@ -6,8 +6,7 @@ subtitle: B.Tech Mechanical Engineering (Minor in AI) &middot; IIT Gandhinagar
 
 profile:
   align: right
-  # TODO: add your photo at assets/img/prof_pic.jpg, then change the line below to `image: prof_pic.jpg`
-  image: prof_pic_placeholder.svg
+  image: prof_pic.jpg
   image_circular: false
   more_info: >
     <p>Indian Institute of Technology Gandhinagar</p>

@@ -19,3 +19,7 @@ vendor
 # Python bytecode from bin/ helper scripts
 __pycache__/
 *.pyc
+
+# Private: contains phone number. Never commit.
+MasterResume.tex
+*.tex

@@ -1,24 +1,23 @@
 ---
 layout: page
 title: "Multi-Scale Template and Feature Matching for Scene Search"
-description: "ES666 Computer Vision assignment · Prof. Shanmuganathan Raman" # TODO: replace with a one-line description (<120 chars) from MasterResume.tex
+description: "From-scratch filtering, multiscale NCC template matching, and Harris/DoG feature matching."
 category: Computer Vision
-importance: 2
-img: assets/img/projects/placeholder.svg # TODO: optional thumbnail in assets/img/projects/
+importance: 3
+img: assets/img/projects/placeholder.svg # optional: replace with a thumbnail in assets/img/projects/
 date_range: "Sep – Oct 2026"
 github: https://github.com/Tanushka-Sonde/Multi-Scale-Template-and-Feature-Matching-for-Scene-Search
 ---
 
-**Sep – Oct 2026** · ES666 Computer Vision assignment · Prof. Shanmuganathan Raman
+**Sep – Oct 2026** · Individual Project, Computer Vision Assignment, Prof. Shanmuganathan Raman
 
 <a class="btn btn-sm z-depth-0" role="button" href="https://github.com/Tanushka-Sonde/Multi-Scale-Template-and-Feature-Matching-for-Scene-Search"><i class="fa-brands fa-github"></i> GitHub</a>
 
 ## What I did
 
-<!-- TODO: paste the 4 bullets verbatim from MasterResume.tex -->
-- TODO
-- TODO
-- TODO
-- TODO
+- Implemented **from-scratch filtering and denoising**, benchmarking box, Gaussian and median filters with PSNR and SSIM, lifting SSIM from 0.41 to 0.91.
+- Built a **multiscale NCC template matcher** using integral images across 8 scales, reaching 1.000 IoU on the test scenes.
+- Designed **Harris and Difference-of-Gaussian detectors** from structure tensors and an 8-level Gaussian scale ladder, building 128-dimensional gradient descriptors over a 4x4 cell grid that extracted up to 4,000 keypoints per scene.
+- Engineered a **rotation invariant voting pipeline**, recovering a 31 degree rotated target from 16 of 827 matches.
 
-**Tech:** TODO
+**Tech:** NCC template matching, Harris and DoG detectors, PSNR, SSIM

@@ -16,132 +16,69 @@ cv:
     Education:
       - institution: Indian Institute of Technology Gandhinagar
         location: Gandhinagar, India
-        area: Mechanical Engineering (Minor in Artificial Intelligence)
+        area: Mechanical Engineering
         studyType: B.Tech
         start_date: 2023
         end_date: present
         score: "CPI: 8.02"
-
       - institution: Prakash College
-        area: Class XII
-        studyType: ""
+        area: Physics, Chemistry, Maths
+        studyType: Class XII
         start_date: 2021
         end_date: 2023
         score: "75.67%"
-
       - institution: Ryan International School
-        area: Class X
-        studyType: ""
-        start_date: 2021
+        area: ""
+        studyType: Class X
+        start_date: 2009
         end_date: 2021
         score: "96.28%"
 
     Experience:
       - company: EY GDS
-        position: Summer Intern, Emerging Technologies (BFSI)
+        position: Summer Intern, Emerging Technologies in BFSI Sector Modernization
         location: Mumbai, India
         start_date: 2026-05
-        end_date: 2026-06 # TODO: confirm end month (master resume: Jun 2026; another version: Jul 2026)
+        end_date: 2026-07
         summary: Agentic Multimodal RAG Knowledge Assistant
         highlights:
-          - "TODO: bullet 1 from MasterResume.tex"
-          - "TODO: bullet 2 from MasterResume.tex"
-          - "TODO: bullet 3 from MasterResume.tex"
-          - "TODO: bullet 4 from MasterResume.tex"
-
-      - company: Deloitte India
-        position: Summer Intern, Technology & Transformation
+          - "Architected a self-correcting **multi-agent LangGraph** pipeline unifying query rewriting, retrieval grading, and reranking under a **reflection-driven feedback loop** with **adaptive retry iterations** to boost grounding and factual accuracy."
+          - "Engineered a **hybrid multimodal retrieval engine** fusing OpenAI **text-embedding-3-large (1536-dim)** semantic vectors with **ColPali visual embeddings (128-dim)**, plus a per-element classifier that crops and routes images, tables, and charts across **4 document formats** (PDF, PPTX, DOCX, XLSX)."
+          - "Built a production-grade **FastAPI** backend with asynchronous request cancellation, sliding-window conversational memory, and a **SHA-256**-based deduplication registry for consistent, idempotent ingestion across distributed nodes."
+          - "Containerized the full stack — **FastAPI** backend, Streamlit UI, PostgreSQL, and Pinecone — into **5 orchestrated microservices** using **Docker Compose**, enabling scalable, fault-tolerant deployment."
+      - company: Deloitte Touche Tohmatsu India LLP
+        position: Summer Intern, Technology & Transformation, Engineering
         start_date: 2026-06
         end_date: 2026-07
         summary: Local RAG-Based Policy Assistant (proof of concept)
         highlights:
-          - "TODO: bullet 1 from MasterResume.tex"
-          - "TODO: bullet 2 from MasterResume.tex"
-          - "TODO: bullet 3 from MasterResume.tex"
-          - "TODO: bullet 4 from MasterResume.tex"
+          - "Built a fully local retrieval-augmented chat system for internal HR policy queries, using **Ollama**-served embeddings and a **ChromaDB** vector store to keep sensitive documents entirely on-premise."
+          - "Designed a document ingestion pipeline conforming to the **Open Knowledge Format (OKF)** spec, combining **PyMuPDF**, OCR fallback via **Tesseract**, and heading-aware markdown extraction across PDF, DOCX, HTML, and CSV,formats."
+          - "Implemented an AI-assisted document splitter that falls back to LLM-proposed section boundaries when no heading structure exists, paired with a mandatory human-in-the-loop review step before any content is indexed."
+          - "Engineered a swappable LLM backend (local **Ollama** or **OpenAI**-compatible APIs) with metadata-aware retrieval boosting by designation and region, deployed via **Docker Compose** with a **Streamlit** chat interface."
 
     Research:
-      - bullet: "**SketchWorld: Camera-Controlled Scene Generation from Sketches** (Aug 2026 – present). Computer Vision Lab, IIT Gandhinagar, with Prof. Shanmuganathan Raman. Ongoing."
-      - bullet: "**[Multi-Parametric Retinal Diagnostics: Reproduction and Extension](https://github.com/Tanushka-Sonde/Multi-Parametric-Retinal-Diagnostics)** (Aug – Nov 2026). Project course with Prof. Prabhat Munshi. TODO: 1-line summary from MasterResume.tex."
+      - bullet: "**SketchWorld: Camera-Controlled Scene Generation from Sketches** (Aug 2026 – Present). Ongoing research project, Computer Vision Lab, IIT Gandhinagar, with Prof. Shanmuganathan Raman. Camera-controlled next-view forecasting with SCEdit tuners on a frozen Stable Diffusion 1.5."
+      - bullet: "**[Multi-Parametric Retinal Diagnostics: Reproduction and Extension](https://github.com/Tanushka-Sonde/Multi-Parametric-Retinal-Diagnostics)** (Aug – Nov 2026). Project course with Prof. Prabhat Munshi. Reproduced a physics-based OCT classifier and stress-tested it with cross-scanner validation on 3 datasets."
 
-    Projects:
-      - name: SIFT-Guided Optical Flow for Lunar Descent Trajectory Reconstruction
-        summary: "ES666 Computer Vision. TODO: 1-line summary from MasterResume.tex."
-        url: https://github.com/Tanushka-Sonde/lunar-descent-optical-flow
-        start_date: 2026-10
-        end_date: 2026-11
-      - name: "Small Multimodal Experiments: CLIP Loss to VLM Adaptation"
-        summary: "Deep Learning course. TODO: 1-line summary from MasterResume.tex."
-        url: https://github.com/Tanushka-Sonde/Small-Multimodal-Experiments
-        start_date: 2026-10
-        end_date: 2026-10
-      - name: Multi-Scale Template and Feature Matching for Scene Search
-        summary: "ES666 Computer Vision. TODO: 1-line summary from MasterResume.tex."
-        url: https://github.com/Tanushka-Sonde/Multi-Scale-Template-and-Feature-Matching-for-Scene-Search
-        start_date: 2026-09
-        end_date: 2026-10
-      - name: Invisible SVD-Based Digital Image Watermarking
-        summary: "ES666 Computer Vision. TODO: 1-line summary from MasterResume.tex."
-        url: https://github.com/Tanushka-Sonde/Invisible-SVD-Based-Digital-Image-Watermarking
-        start_date: 2026-09
-        end_date: 2026-09
-      - name: "Small Models and Attention: Transformers from Scratch"
-        summary: "Deep Learning course. TODO: 1-line summary from MasterResume.tex."
-        url: https://github.com/Tanushka-Sonde/Small_Models_and_Attention
-        start_date: 2026-09
-        end_date: 2026-09
-      - name: Prompted Drywall Defect Segmentation using CLIP-Conditioned Models
-        summary: "TODO: 1-line summary from MasterResume.tex."
-        url: https://github.com/Tanushka-Sonde/Prompted_Segmentation_for_Drywall_QA
-        start_date: 2026-04
-        end_date: 2026-04
-      - name: Paged KV Cache & Continuous Batching Inference Engine
-        summary: "TODO: 1-line summary from MasterResume.tex."
-        url: https://github.com/Tanushka-Sonde/Tinyinfer
-        start_date: 2026-03
-        end_date: 2026-04
-      - name: Alpha Research & Backtesting Framework
-        summary: "TODO: 1-line summary from MasterResume.tex."
-        url: https://github.com/Tanushka-Sonde/alpha-research-framework
-        start_date: 2026-01
-        end_date: 2026-02
-      - name: Deep Learning and Regularization Experiments
-        summary: "Machine Learning course. TODO: 1-line summary from MasterResume.tex."
-        url: https://github.com/Tanushka-Sonde/ES335-Machine_learning-assignment-3
-        start_date: 2025-10
-        end_date: 2025-10
-      - name: Optimization and Matrix Factorization Experiments
-        summary: "Machine Learning course (group). TODO: 1-line summary from MasterResume.tex."
-        url: https://github.com/Tanushka-Sonde/ES335-Machine_learning-assignment2
-        start_date: 2025-09
-        end_date: 2025-09
-      - name: Smart Labeling Pipeline for Scalable Data Annotation
-        summary: "Software Tools & Techniques for AI. TODO: 1-line summary and Colab link from MasterResume.tex."
-        start_date: 2025-09
-        end_date: 2025-09
-      - name: Box Office Bomb Data Pipeline
-        summary: "Software Tools & Techniques for AI. TODO: 1-line summary and Colab link from MasterResume.tex."
-        start_date: 2025-09
-        end_date: 2025-09
-      - name: Deep Learning Optimizers, Loss Landscapes & Regularization
-        summary: "Deep Learning course (group). TODO: 1-line summary from MasterResume.tex; confirm date."
-        url: https://github.com/Tanushka-Sonde/Optimizers-Loss-Landscapes-Regularization
-        start_date: 2025-08
-        end_date: 2025-08
-      - name: Decision Tree Based Human Activity Recognition
-        summary: "Machine Learning course (group). TODO: 1-line summary from MasterResume.tex."
-        url: https://github.com/Tanushka-Sonde/ES335-assignment-1
-        start_date: 2025-08
-        end_date: 2025-08
-      - name: Vision-Language Policy Learning for Robotic Manipulation
-        summary: "With Prof. Harish Palanthandalam-Madapusi. Fine-tuning and real-robot deployment were not completed. TODO: wording from MasterResume.tex."
-        start_date: 2025-06
-        end_date: 2025-07
-      - name: Arm Manipulator Teleoperation using Computer Vision
-        summary: "With Prof. Harish Palanthandalam-Madapusi. TODO: 1-line summary from MasterResume.tex."
-        url: https://github.com/IITGN-Robotics/Addverb-Heal-Teleop
-        start_date: 2025-01
-        end_date: 2025-04
+    Selected Projects:
+      - bullet: "**[City-Scale 3D Reconstruction: Structure from Motion from Tourist Photos](https://github.com/Tanushka-Sonde/Photos-to-3d-sfm)** (Nov 2026). City-scale Structure-from-Motion from tourist photos, with 9 core algorithms implemented from scratch."
+      - bullet: "**[SIFT-Guided Optical Flow for Lunar Descent Trajectory Reconstruction](https://github.com/Tanushka-Sonde/lunar-descent-optical-flow)** (Oct – Nov 2026). Reconstructed a metric 3D lander trajectory from Chang'e-5 descent frames with SIFT-seeded KLT tracking."
+      - bullet: "**[Small Multimodal Experiments: CLIP Loss to VLM Adaptation](https://github.com/Tanushka-Sonde/Small-Multimodal-Experiments)** (Oct 2026). Symmetric CLIP loss from scratch, semantic image retrieval, and SmolVLM connector fine-tuning."
+      - bullet: "**[Multi-Scale Template and Feature Matching for Scene Search](https://github.com/Tanushka-Sonde/Multi-Scale-Template-and-Feature-Matching-for-Scene-Search)** (Sep – Oct 2026). From-scratch filtering, multiscale NCC template matching, and Harris/DoG feature matching."
+      - bullet: "**[Small Models and Attention: Transformers from Scratch](https://github.com/Tanushka-Sonde/Small_Models_and_Attention)** (Sep 2026). Label smoothing, causal self-attention and a minimal Vision Transformer, built from first principles."
+      - bullet: "**[Invisible SVD-Based Digital Image Watermarking System](https://github.com/Tanushka-Sonde/Invisible-SVD-Based-Digital-Image-Watermarking)** (Sep 2026). Invisible QR-code watermarking with SVD implemented from scratch, plus robustness benchmarks."
+      - bullet: "**[Prompted Drywall Defect Segmentation using CLIP-Conditioned Models](https://github.com/Tanushka-Sonde/Prompted_Segmentation_for_Drywall_QA)** (Apr 2026). Text-prompted crack and taping-area segmentation with a from-scratch CLIP-UNet using FiLM conditioning."
+      - bullet: "**[Paged KV Cache & Continuous Batching Inference Engine](https://github.com/Tanushka-Sonde/Tinyinfer)** (Mar – Apr 2026). vLLM-style paged KV cache and continuous batching scheduler built from scratch in PyTorch."
+      - bullet: "**[Alpha Research & Backtesting Framework](https://github.com/Tanushka-Sonde/alpha-research-framework)** (Jan – Feb 2026). Quant research pipeline with LightGBM signals, purged walk-forward CV and a realistic backtester."
+      - bullet: "**[Deep Learning and Regularization Experiments](https://github.com/Tanushka-Sonde/ES335-Machine_learning-assignment-3)** (Oct 2025). Next-word prediction MLP, a regularization study on make_moons, and MLP/CNN models on MNIST."
+      - bullet: "**[Optimization and Matrix Factorization Experiments](https://github.com/Tanushka-Sonde/ES335-Machine_learning-assignment2)** (Sep 2025). Gradient descent variants, feature scaling, autoregressive forecasting, and low-rank matrix factorization."
+      - bullet: "**[Smart Labeling Pipeline for Scalable Data Annotation](https://colab.research.google.com/drive/1p_m4IEGk4RipVAuHvS4MfAQpMojEDIYV?usp=sharing)** (Sep 2025). Labeling pipeline combining human annotation, Snorkel weak supervision, active learning and LLMs."
+      - bullet: "**[Box Office Bomb Data Pipeline](https://colab.research.google.com/drive/1FcTi6BDUjNgkldIlLcHMOux2kElmMvzJ?usp=sharing)** (Sep 2025). Scraped, validated and enriched 138 box-office bomb records into an analytics-ready dataset."
+      - bullet: "**[Deep Learning Optimizers, Loss Landscapes & Regularization](https://github.com/Tanushka-Sonde/Optimizers-Loss-Landscapes-Regularization)** (Aug 2025). Optimizers on classic loss surfaces, Adam learning-rate schedules, and dropout on FashionMNIST."
+      - bullet: "**[Decision Tree Based Human Activity Recognition (HAR)](https://github.com/Tanushka-Sonde/ES335-assignment-1)** (Aug 2025). Decision tree implemented from scratch for human activity recognition on UCI-HAR accelerometer data."
+      - bullet: "**Vision-Language Policy Learning for Robotic Manipulation** (Jun – Jul 2025). Sim-to-real pipeline and dataset for OpenVLA-7B on a Franka FR3 (fine-tuning not completed)."
+      - bullet: "**[Arm Manipulator Teleoperation using Computer Vision](https://github.com/IITGN-Robotics/Addverb-Heal-Teleop)** (Jan – Apr 2025). Vision-based Cartesian teleoperation of the Addverb Heal arm with RealSense, ArUco and MuJoCo."
 
     Skills:
       - name: Languages
@@ -152,8 +89,9 @@ cv:
         keywords: "PyTorch, TensorFlow, Hugging Face, NumPy, Pandas, scikit-learn, OpenCV, Matplotlib, Streamlit, MATLAB, Linux, Git/GitHub, ROS 2, MoveIt, MuJoCo, LaTeX, LangGraph, FastAPI, Docker Compose, PostgreSQL, Pinecone, ChromaDB, Ollama, LightGBM, pytest"
 
     Positions of Responsibility:
-      - bullet: "**Senior Designer**, E&I Initiative (EII), IIT Gandhinagar (Oct 2024 – Apr 2025). Led a team of 7 designers."
-      - bullet: "**Hostel Activity Team member**, IIT Gandhinagar (Aug 2024 – Apr 2025). 200+ residents."
+      - bullet: "**Senior Designer**, Entrepreneurship and Innovation Initiative (EII), IIT Gandhinagar (Oct 2024 – Apr 2025). **Led a team of 7 designers** to create promotional posters and merchandise, boosting engagement for entrepreneurial events and initiatives."
+      - bullet: "**Hostel Activity Team Member (HAT)**, IIT Gandhinagar (Aug 2024 – Apr 2025). **3-member team** — Organized community-building activities for **200+ hostel residents**, gaining hands-on experience in event planning, coordination, and teamwork."
 
     Volunteering:
-      - bullet: "**Teaching Volunteer**, Nyasa, IIT Gandhinagar. Taught 25+ students, KG to Class 4."
+      - bullet: "**Teaching Volunteer**, Nyasa, IIT Gandhinagar. **Taught 25+ students** from Kindergarten to Class 4 as part of Nyasa, a student-led outreach initiative at IITGN."
+      - bullet: "Gained hands-on experience in lesson planning, classroom engagement, and supporting early education."
