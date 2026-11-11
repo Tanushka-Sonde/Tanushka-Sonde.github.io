@@ -22,12 +22,14 @@ cv:
         end_date: present
         score: "CPI: 8.02"
       - institution: Prakash College
+        location: Mumbai, India
         area: Physics, Chemistry, Maths · 75.67%
         studyType: Class XII
         start_date: 2021
         end_date: 2023
         score: "75.67%"
       - institution: Ryan International School
+        location: Mumbai, India
         area: "96.28%"
         studyType: Class X
         start_date: 2009
