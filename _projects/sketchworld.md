@@ -4,7 +4,6 @@ title: "SketchWorld: Camera-Controlled Scene Generation from Sketches"
 description: "Camera-controlled next-view forecasting with SCEdit tuners on a frozen Stable Diffusion 1.5."
 category: Research
 importance: 1
-img: assets/img/projects/placeholder.svg # optional: replace with a thumbnail in assets/img/projects/
 date_range: "Aug 2026 – Present"
 ---
 

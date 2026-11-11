@@ -4,7 +4,6 @@ title: "Multi-Scale Template and Feature Matching for Scene Search"
 description: "From-scratch filtering, multiscale NCC template matching, and Harris/DoG feature matching."
 category: Computer Vision
 importance: 3
-img: assets/img/projects/placeholder.svg # optional: replace with a thumbnail in assets/img/projects/
 date_range: "Sep – Oct 2026"
 github: https://github.com/Tanushka-Sonde/Multi-Scale-Template-and-Feature-Matching-for-Scene-Search
 ---

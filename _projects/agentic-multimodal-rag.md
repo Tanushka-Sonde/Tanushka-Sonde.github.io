@@ -4,7 +4,6 @@ title: "Agentic Multimodal RAG Knowledge Assistant"
 description: "Self-correcting multi-agent LangGraph RAG with hybrid text and ColPali visual retrieval."
 category: Industry
 importance: 1
-img: assets/img/projects/placeholder.svg # optional: replace with a thumbnail in assets/img/projects/
 date_range: "May – Jul 2026"
 ---
 

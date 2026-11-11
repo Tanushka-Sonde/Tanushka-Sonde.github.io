@@ -4,7 +4,6 @@ title: "Optimization and Matrix Factorization Experiments"
 description: "Gradient descent variants, feature scaling, autoregressive forecasting, and low-rank matrix factorization."
 category: Deep Learning & ML
 importance: 5
-img: assets/img/projects/placeholder.svg # optional: replace with a thumbnail in assets/img/projects/
 date_range: "Sep 2025"
 github: https://github.com/Tanushka-Sonde/ES335-Machine_learning-assignment2
 ---

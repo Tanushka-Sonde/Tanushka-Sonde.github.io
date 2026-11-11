@@ -4,7 +4,6 @@ title: "Deep Learning Optimizers, Loss Landscapes & Regularization"
 description: "Optimizers on classic loss surfaces, Adam learning-rate schedules, and dropout on FashionMNIST."
 category: Deep Learning & ML
 importance: 3
-img: assets/img/projects/placeholder.svg # optional: replace with a thumbnail in assets/img/projects/
 date_range: "Aug 2025"
 github: https://github.com/Tanushka-Sonde/Optimizers-Loss-Landscapes-Regularization
 ---

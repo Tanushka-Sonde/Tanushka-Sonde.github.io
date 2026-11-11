@@ -4,7 +4,6 @@ title: "Paged KV Cache & Continuous Batching Inference Engine"
 description: "vLLM-style paged KV cache and continuous batching scheduler built from scratch in PyTorch."
 category: ML Systems
 importance: 1
-img: assets/img/projects/placeholder.svg # optional: replace with a thumbnail in assets/img/projects/
 date_range: "Mar – Apr 2026"
 github: https://github.com/Tanushka-Sonde/Tinyinfer
 ---

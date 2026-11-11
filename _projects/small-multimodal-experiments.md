@@ -4,7 +4,6 @@ title: "Small Multimodal Experiments: CLIP Loss to VLM Adaptation"
 description: "Symmetric CLIP loss from scratch, semantic image retrieval, and SmolVLM connector fine-tuning."
 category: Deep Learning & ML
 importance: 1
-img: assets/img/projects/placeholder.svg # optional: replace with a thumbnail in assets/img/projects/
 date_range: "Oct 2026"
 github: https://github.com/Tanushka-Sonde/Small-Multimodal-Experiments
 ---

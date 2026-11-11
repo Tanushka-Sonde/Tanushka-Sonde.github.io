@@ -4,7 +4,6 @@ title: "Arm Manipulator Teleoperation using Computer Vision"
 description: "Vision-based Cartesian teleoperation of the Addverb Heal arm with RealSense, ArUco and MuJoCo."
 category: Robotics
 importance: 1
-img: assets/img/projects/placeholder.svg # optional: replace with a thumbnail in assets/img/projects/
 date_range: "Jan – Apr 2025"
 github: https://github.com/IITGN-Robotics/Addverb-Heal-Teleop
 ---

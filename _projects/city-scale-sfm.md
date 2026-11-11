@@ -4,7 +4,6 @@ title: "City-Scale 3D Reconstruction: Structure from Motion from Tourist Photos"
 description: "City-scale Structure-from-Motion from tourist photos, with 9 core algorithms implemented from scratch."
 category: Computer Vision
 importance: 2
-img: assets/img/projects/placeholder.svg # optional: replace with a thumbnail in assets/img/projects/
 date_range: "Nov 2026"
 github: https://github.com/Tanushka-Sonde/Photos-to-3d-sfm
 ---

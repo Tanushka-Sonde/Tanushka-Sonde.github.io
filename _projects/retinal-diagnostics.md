@@ -4,7 +4,6 @@ title: "Multi-Parametric Retinal Diagnostics: Reproduction and Extension"
 description: "Reproduced a physics-based OCT classifier and stress-tested it with cross-scanner validation on 3 datasets."
 category: Research
 importance: 2
-img: assets/img/projects/placeholder.svg # optional: replace with a thumbnail in assets/img/projects/
 date_range: "Aug – Nov 2026"
 github: https://github.com/Tanushka-Sonde/Multi-Parametric-Retinal-Diagnostics
 ---

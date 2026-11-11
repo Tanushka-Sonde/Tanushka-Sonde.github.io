@@ -1,6 +1,6 @@
 ---
 layout: about
-title: about
+title: About
 permalink: /
 subtitle: B.Tech Mechanical Engineering (Minor in AI) &middot; IIT Gandhinagar
 
@@ -16,7 +16,7 @@ selected_papers: false # no publications yet
 social: true # includes social icons at the bottom of the page
 
 announcements:
-  enabled: true
+  enabled: false # News is included in the page body below, so it sits above Projects
   scrollable: false
   limit: 5
 
@@ -28,11 +28,15 @@ I'm a third-year B.Tech student in Mechanical Engineering at IIT Gandhinagar, mi
 
 I'm currently doing research at the Computer Vision Lab, IIT Gandhinagar, with Prof. Shanmuganathan Raman on camera-controlled scene generation from sketches. In summer 2026 I interned at EY GDS, building an agentic multimodal RAG knowledge assistant, and at Deloitte India, building a proof-of-concept local RAG policy assistant.
 
-Outside of that, I've built a vLLM-style paged KV cache inference engine from scratch, a quant research and backtesting framework, and several computer vision pipelines. Before moving into ML, I worked on robot manipulation with ROS 2 and MuJoCo.
+Outside of that, I've built a vLLM-style paged KV cache inference engine from scratch, a quant research and backtesting framework, and several computer vision pipelines. Before moving into ML, I worked on robot manipulation with ROS 2 and MuJoCo: I built a vision-based teleoperation system for a robotic arm, and a simulation-to-real pipeline for running the OpenVLA vision-language-action model on a Franka FR3.
 
 I'm open to research and engineering internship opportunities. The best way to reach me is [email](mailto:tanushka.sonde@iitgn.ac.in).
 
-## selected projects
+## News
+
+{% include news.liquid limit=true %}
+
+## Projects
 
 {% assign selected = "sketchworld,agentic-multimodal-rag,paged-kv-cache-inference-engine,sift-optical-flow-lunar-descent" | split: "," %}
 
@@ -46,3 +50,5 @@ I'm open to research and engineering internship opportunities. The best way to r
     {% endfor %}
   </div>
 </div>
+
+[See all projects &rarr;](/projects/)

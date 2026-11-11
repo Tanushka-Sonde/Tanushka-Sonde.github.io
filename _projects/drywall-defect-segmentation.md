@@ -4,7 +4,6 @@ title: "Prompted Drywall Defect Segmentation using CLIP-Conditioned Models"
 description: "Text-prompted crack and taping-area segmentation with a from-scratch CLIP-UNet using FiLM conditioning."
 category: Computer Vision
 importance: 5
-img: assets/img/projects/placeholder.svg # optional: replace with a thumbnail in assets/img/projects/
 date_range: "Apr 2026"
 github: https://github.com/Tanushka-Sonde/Prompted_Segmentation_for_Drywall_QA
 ---

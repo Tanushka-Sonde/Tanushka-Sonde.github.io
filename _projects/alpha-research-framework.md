@@ -4,7 +4,6 @@ title: "Alpha Research & Backtesting Framework"
 description: "Quant research pipeline with LightGBM signals, purged walk-forward CV and a realistic backtester."
 category: ML Systems
 importance: 2
-img: assets/img/projects/placeholder.svg # optional: replace with a thumbnail in assets/img/projects/
 date_range: "Jan – Feb 2026"
 github: https://github.com/Tanushka-Sonde/alpha-research-framework
 ---

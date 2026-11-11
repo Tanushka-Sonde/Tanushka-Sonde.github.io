@@ -4,7 +4,6 @@ title: "Invisible SVD-Based Digital Image Watermarking System"
 description: "Invisible QR-code watermarking with SVD implemented from scratch, plus robustness benchmarks."
 category: Computer Vision
 importance: 4
-img: assets/img/projects/placeholder.svg # optional: replace with a thumbnail in assets/img/projects/
 date_range: "Sep 2026"
 github: https://github.com/Tanushka-Sonde/Invisible-SVD-Based-Digital-Image-Watermarking
 ---

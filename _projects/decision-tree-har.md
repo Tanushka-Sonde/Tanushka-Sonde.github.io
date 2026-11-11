@@ -4,7 +4,6 @@ title: "Decision Tree Based Human Activity Recognition (HAR)"
 description: "Decision tree implemented from scratch for human activity recognition on UCI-HAR accelerometer data."
 category: Deep Learning & ML
 importance: 6
-img: assets/img/projects/placeholder.svg # optional: replace with a thumbnail in assets/img/projects/
 date_range: "Aug 2025"
 github: https://github.com/Tanushka-Sonde/ES335-assignment-1
 ---

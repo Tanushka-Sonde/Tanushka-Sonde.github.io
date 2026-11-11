@@ -4,7 +4,6 @@ title: "Small Models and Attention: Transformers from Scratch"
 description: "Label smoothing, causal self-attention and a minimal Vision Transformer, built from first principles."
 category: Deep Learning & ML
 importance: 2
-img: assets/img/projects/placeholder.svg # optional: replace with a thumbnail in assets/img/projects/
 date_range: "Sep 2026"
 github: https://github.com/Tanushka-Sonde/Small_Models_and_Attention
 ---

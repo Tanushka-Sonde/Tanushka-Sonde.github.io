@@ -4,7 +4,6 @@ title: "Local RAG-Based Policy Assistant"
 description: "Fully local RAG chat system for HR policy queries using Ollama and ChromaDB."
 category: Industry
 importance: 2
-img: assets/img/projects/placeholder.svg # optional: replace with a thumbnail in assets/img/projects/
 date_range: "Jun – Jul 2026"
 ---
 

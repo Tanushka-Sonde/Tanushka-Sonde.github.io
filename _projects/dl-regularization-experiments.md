@@ -4,7 +4,6 @@ title: "Deep Learning and Regularization Experiments"
 description: "Next-word prediction MLP, a regularization study on make_moons, and MLP/CNN models on MNIST."
 category: Deep Learning & ML
 importance: 4
-img: assets/img/projects/placeholder.svg # optional: replace with a thumbnail in assets/img/projects/
 date_range: "Oct 2025"
 github: https://github.com/Tanushka-Sonde/ES335-Machine_learning-assignment-3
 ---

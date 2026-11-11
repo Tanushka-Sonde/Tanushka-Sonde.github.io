@@ -4,7 +4,6 @@ title: "Vision-Language Policy Learning for Robotic Manipulation"
 description: "Sim-to-real pipeline and dataset for OpenVLA-7B on a Franka FR3 (fine-tuning not completed)."
 category: Robotics
 importance: 2
-img: assets/img/projects/placeholder.svg # optional: replace with a thumbnail in assets/img/projects/
 date_range: "Jun – Jul 2025"
 ---
 

@@ -16,19 +16,19 @@ cv:
     Education:
       - institution: Indian Institute of Technology Gandhinagar
         location: Gandhinagar, India
-        area: Mechanical Engineering
+        area: Mechanical Engineering · CPI 8.02
         studyType: B.Tech
         start_date: 2023
         end_date: present
         score: "CPI: 8.02"
       - institution: Prakash College
-        area: Physics, Chemistry, Maths
+        area: Physics, Chemistry, Maths · 75.67%
         studyType: Class XII
         start_date: 2021
         end_date: 2023
         score: "75.67%"
       - institution: Ryan International School
-        area: ""
+        area: "96.28%"
         studyType: Class X
         start_date: 2009
         end_date: 2021
@@ -61,24 +61,74 @@ cv:
       - bullet: "**SketchWorld: Camera-Controlled Scene Generation from Sketches** (Aug 2026 – Present). Ongoing research project, Computer Vision Lab, IIT Gandhinagar, with Prof. Shanmuganathan Raman. Camera-controlled next-view forecasting with SCEdit tuners on a frozen Stable Diffusion 1.5."
       - bullet: "**[Multi-Parametric Retinal Diagnostics: Reproduction and Extension](https://github.com/Tanushka-Sonde/Multi-Parametric-Retinal-Diagnostics)** (Aug – Nov 2026). Project course with Prof. Prabhat Munshi. Reproduced a physics-based OCT classifier and stress-tested it with cross-scanner validation on 3 datasets."
 
-    Selected Projects:
-      - bullet: "**[City-Scale 3D Reconstruction: Structure from Motion from Tourist Photos](https://github.com/Tanushka-Sonde/Photos-to-3d-sfm)** (Nov 2026). City-scale Structure-from-Motion from tourist photos, with 9 core algorithms implemented from scratch."
-      - bullet: "**[SIFT-Guided Optical Flow for Lunar Descent Trajectory Reconstruction](https://github.com/Tanushka-Sonde/lunar-descent-optical-flow)** (Oct – Nov 2026). Reconstructed a metric 3D lander trajectory from Chang'e-5 descent frames with SIFT-seeded KLT tracking."
-      - bullet: "**[Small Multimodal Experiments: CLIP Loss to VLM Adaptation](https://github.com/Tanushka-Sonde/Small-Multimodal-Experiments)** (Oct 2026). Symmetric CLIP loss from scratch, semantic image retrieval, and SmolVLM connector fine-tuning."
-      - bullet: "**[Multi-Scale Template and Feature Matching for Scene Search](https://github.com/Tanushka-Sonde/Multi-Scale-Template-and-Feature-Matching-for-Scene-Search)** (Sep – Oct 2026). From-scratch filtering, multiscale NCC template matching, and Harris/DoG feature matching."
-      - bullet: "**[Small Models and Attention: Transformers from Scratch](https://github.com/Tanushka-Sonde/Small_Models_and_Attention)** (Sep 2026). Label smoothing, causal self-attention and a minimal Vision Transformer, built from first principles."
-      - bullet: "**[Invisible SVD-Based Digital Image Watermarking System](https://github.com/Tanushka-Sonde/Invisible-SVD-Based-Digital-Image-Watermarking)** (Sep 2026). Invisible QR-code watermarking with SVD implemented from scratch, plus robustness benchmarks."
-      - bullet: "**[Prompted Drywall Defect Segmentation using CLIP-Conditioned Models](https://github.com/Tanushka-Sonde/Prompted_Segmentation_for_Drywall_QA)** (Apr 2026). Text-prompted crack and taping-area segmentation with a from-scratch CLIP-UNet using FiLM conditioning."
-      - bullet: "**[Paged KV Cache & Continuous Batching Inference Engine](https://github.com/Tanushka-Sonde/Tinyinfer)** (Mar – Apr 2026). vLLM-style paged KV cache and continuous batching scheduler built from scratch in PyTorch."
-      - bullet: "**[Alpha Research & Backtesting Framework](https://github.com/Tanushka-Sonde/alpha-research-framework)** (Jan – Feb 2026). Quant research pipeline with LightGBM signals, purged walk-forward CV and a realistic backtester."
-      - bullet: "**[Deep Learning and Regularization Experiments](https://github.com/Tanushka-Sonde/ES335-Machine_learning-assignment-3)** (Oct 2025). Next-word prediction MLP, a regularization study on make_moons, and MLP/CNN models on MNIST."
-      - bullet: "**[Optimization and Matrix Factorization Experiments](https://github.com/Tanushka-Sonde/ES335-Machine_learning-assignment2)** (Sep 2025). Gradient descent variants, feature scaling, autoregressive forecasting, and low-rank matrix factorization."
-      - bullet: "**[Smart Labeling Pipeline for Scalable Data Annotation](https://colab.research.google.com/drive/1p_m4IEGk4RipVAuHvS4MfAQpMojEDIYV?usp=sharing)** (Sep 2025). Labeling pipeline combining human annotation, Snorkel weak supervision, active learning and LLMs."
-      - bullet: "**[Box Office Bomb Data Pipeline](https://colab.research.google.com/drive/1FcTi6BDUjNgkldIlLcHMOux2kElmMvzJ?usp=sharing)** (Sep 2025). Scraped, validated and enriched 138 box-office bomb records into an analytics-ready dataset."
-      - bullet: "**[Deep Learning Optimizers, Loss Landscapes & Regularization](https://github.com/Tanushka-Sonde/Optimizers-Loss-Landscapes-Regularization)** (Aug 2025). Optimizers on classic loss surfaces, Adam learning-rate schedules, and dropout on FashionMNIST."
-      - bullet: "**[Decision Tree Based Human Activity Recognition (HAR)](https://github.com/Tanushka-Sonde/ES335-assignment-1)** (Aug 2025). Decision tree implemented from scratch for human activity recognition on UCI-HAR accelerometer data."
-      - bullet: "**Vision-Language Policy Learning for Robotic Manipulation** (Jun – Jul 2025). Sim-to-real pipeline and dataset for OpenVLA-7B on a Franka FR3 (fine-tuning not completed)."
-      - bullet: "**[Arm Manipulator Teleoperation using Computer Vision](https://github.com/IITGN-Robotics/Addverb-Heal-Teleop)** (Jan – Apr 2025). Vision-based Cartesian teleoperation of the Addverb Heal arm with RealSense, ArUco and MuJoCo."
+    Projects:
+      - name: "City-Scale 3D Reconstruction: Structure from Motion from Tourist Photos"
+        url: https://github.com/Tanushka-Sonde/Photos-to-3d-sfm
+        date: 2026-11
+        summary: "City-scale Structure-from-Motion from tourist photos, with 9 core algorithms implemented from scratch. (Nov 2026)"
+      - name: "SIFT-Guided Optical Flow for Lunar Descent Trajectory Reconstruction"
+        url: https://github.com/Tanushka-Sonde/lunar-descent-optical-flow
+        date: 2026-11
+        summary: "Reconstructed a metric 3D lander trajectory from Chang'e-5 descent frames with SIFT-seeded KLT tracking. (Oct – Nov 2026)"
+      - name: "Small Multimodal Experiments: CLIP Loss to VLM Adaptation"
+        url: https://github.com/Tanushka-Sonde/Small-Multimodal-Experiments
+        date: 2026-10
+        summary: "Symmetric CLIP loss from scratch, semantic image retrieval, and SmolVLM connector fine-tuning. (Oct 2026)"
+      - name: "Multi-Scale Template and Feature Matching for Scene Search"
+        url: https://github.com/Tanushka-Sonde/Multi-Scale-Template-and-Feature-Matching-for-Scene-Search
+        date: 2026-10
+        summary: "From-scratch filtering, multiscale NCC template matching, and Harris/DoG feature matching. (Sep – Oct 2026)"
+      - name: "Small Models and Attention: Transformers from Scratch"
+        url: https://github.com/Tanushka-Sonde/Small_Models_and_Attention
+        date: 2026-09
+        summary: "Label smoothing, causal self-attention and a minimal Vision Transformer, built from first principles. (Sep 2026)"
+      - name: "Invisible SVD-Based Digital Image Watermarking System"
+        url: https://github.com/Tanushka-Sonde/Invisible-SVD-Based-Digital-Image-Watermarking
+        date: 2026-09
+        summary: "Invisible QR-code watermarking with SVD implemented from scratch, plus robustness benchmarks. (Sep 2026)"
+      - name: "Prompted Drywall Defect Segmentation using CLIP-Conditioned Models"
+        url: https://github.com/Tanushka-Sonde/Prompted_Segmentation_for_Drywall_QA
+        date: 2026-04
+        summary: "Text-prompted crack and taping-area segmentation with a from-scratch CLIP-UNet using FiLM conditioning. (Apr 2026)"
+      - name: "Paged KV Cache & Continuous Batching Inference Engine"
+        url: https://github.com/Tanushka-Sonde/Tinyinfer
+        date: 2026-04
+        summary: "vLLM-style paged KV cache and continuous batching scheduler built from scratch in PyTorch. (Mar – Apr 2026)"
+      - name: "Alpha Research & Backtesting Framework"
+        url: https://github.com/Tanushka-Sonde/alpha-research-framework
+        date: 2026-02
+        summary: "Quant research pipeline with LightGBM signals, purged walk-forward CV and a realistic backtester. (Jan – Feb 2026)"
+      - name: "Deep Learning and Regularization Experiments"
+        url: https://github.com/Tanushka-Sonde/ES335-Machine_learning-assignment-3
+        date: 2025-10
+        summary: "Next-word prediction MLP, a regularization study on make_moons, and MLP/CNN models on MNIST. (Oct 2025)"
+      - name: "Optimization and Matrix Factorization Experiments"
+        url: https://github.com/Tanushka-Sonde/ES335-Machine_learning-assignment2
+        date: 2025-09
+        summary: "Gradient descent variants, feature scaling, autoregressive forecasting, and low-rank matrix factorization. (Sep 2025)"
+      - name: "Smart Labeling Pipeline for Scalable Data Annotation"
+        url: https://colab.research.google.com/drive/1p_m4IEGk4RipVAuHvS4MfAQpMojEDIYV?usp=sharing
+        date: 2025-09
+        summary: "Labeling pipeline combining human annotation, Snorkel weak supervision, active learning and LLMs. (Sep 2025)"
+      - name: "Box Office Bomb Data Pipeline"
+        url: https://colab.research.google.com/drive/1FcTi6BDUjNgkldIlLcHMOux2kElmMvzJ?usp=sharing
+        date: 2025-09
+        summary: "Scraped, validated and enriched 138 box-office bomb records into an analytics-ready dataset. (Sep 2025)"
+      - name: "Deep Learning Optimizers, Loss Landscapes & Regularization"
+        url: https://github.com/Tanushka-Sonde/Optimizers-Loss-Landscapes-Regularization
+        date: 2025-08
+        summary: "Optimizers on classic loss surfaces, Adam learning-rate schedules, and dropout on FashionMNIST. (Aug 2025)"
+      - name: "Decision Tree Based Human Activity Recognition (HAR)"
+        url: https://github.com/Tanushka-Sonde/ES335-assignment-1
+        date: 2025-08
+        summary: "Decision tree implemented from scratch for human activity recognition on UCI-HAR accelerometer data. (Aug 2025)"
+      - name: "Vision-Language Policy Learning for Robotic Manipulation"
+        date: 2025-07
+        summary: "Sim-to-real pipeline and dataset for OpenVLA-7B on a Franka FR3 (fine-tuning not completed). (Jun – Jul 2025)"
+      - name: "Arm Manipulator Teleoperation using Computer Vision"
+        url: https://github.com/IITGN-Robotics/Addverb-Heal-Teleop
+        date: 2025-04
+        summary: "Vision-based Cartesian teleoperation of the Addverb Heal arm with RealSense, ArUco and MuJoCo. (Jan – Apr 2025)"
 
     Skills:
       - name: Languages

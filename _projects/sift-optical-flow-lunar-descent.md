@@ -4,7 +4,6 @@ title: "SIFT-Guided Optical Flow for Lunar Descent Trajectory Reconstruction"
 description: "Reconstructed a metric 3D lander trajectory from Chang'e-5 descent frames with SIFT-seeded KLT tracking."
 category: Computer Vision
 importance: 1
-img: assets/img/projects/placeholder.svg # optional: replace with a thumbnail in assets/img/projects/
 date_range: "Oct – Nov 2026"
 github: https://github.com/Tanushka-Sonde/lunar-descent-optical-flow
 ---

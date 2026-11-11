@@ -4,7 +4,6 @@ title: "Smart Labeling Pipeline for Scalable Data Annotation"
 description: "Labeling pipeline combining human annotation, Snorkel weak supervision, active learning and LLMs."
 category: Data Engineering
 importance: 1
-img: assets/img/projects/placeholder.svg # optional: replace with a thumbnail in assets/img/projects/
 date_range: "Sep 2025"
 ---
 

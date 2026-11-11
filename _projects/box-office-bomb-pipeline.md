@@ -4,7 +4,6 @@ title: "Box Office Bomb Data Pipeline"
 description: "Scraped, validated and enriched 138 box-office bomb records into an analytics-ready dataset."
 category: Data Engineering
 importance: 2
-img: assets/img/projects/placeholder.svg # optional: replace with a thumbnail in assets/img/projects/
 date_range: "Sep 2025"
 ---
 
