@@ -31,4 +31,6 @@ html[data-theme="dark"] {
 
 .projects h2.category {
   text-transform: none;
+  color: var(--global-text-color);
+  opacity: 0.85;
 }
