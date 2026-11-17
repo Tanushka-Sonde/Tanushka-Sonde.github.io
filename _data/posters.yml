@@ -1,0 +1,21 @@
+# Posters and presentations, shown on /posters/ (newest first).
+# An entry only appears once its PDF exists at the given path, so you can list
+# items here before uploading the file.
+#
+# Fields:
+#   title      (required)
+#   pdf        (required) path under assets/pdf/posters/
+#   kind       Poster | Slides | Talk
+#   venue      course, lab meeting, conference, ...
+#   date       e.g. "Nov 2026"
+#   thumbnail  optional image under assets/img/posters/ (e.g. a PNG of the first page)
+#   project    optional slug in _projects/ (links "Project page")
+#   blog       optional link to a related blog post
+
+- title: "Multi-Parametric Retinal Diagnostics: Reproduction and Extension"
+  kind: Poster
+  venue: Project Course, IIT Gandhinagar (Prof. Prabhat Munshi)
+  date: "Nov 2026"
+  pdf: assets/pdf/posters/retinal-diagnostics-poster.pdf
+  thumbnail: assets/img/posters/retinal-diagnostics-poster.png
+  project: retinal-diagnostics
