@@ -9,6 +9,8 @@ date_range: "Aug 2026 – Present"
 
 **Aug 2026 – Present** · Ongoing Research Project, Computer Vision Lab, IIT Gandhinagar, Prof. Shanmuganathan Raman
 
+<a class="btn btn-sm z-depth-0" role="button" href="/assets/pdf/posters/sketchworld-poster.pdf" target="_blank"><i class="fa-solid fa-file-pdf"></i> Poster</a>
+
 ## What I did
 
 - Conducted a **literature-grounded benchmark** of six controllable diffusion methods on COCO, including ControlNet, T2I-Adapter and SCEdit, to inform the project's design.

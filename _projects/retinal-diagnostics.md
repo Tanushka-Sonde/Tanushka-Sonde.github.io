@@ -10,7 +10,7 @@ github: https://github.com/Tanushka-Sonde/Multi-Parametric-Retinal-Diagnostics
 
 **Aug – Nov 2026** · Project Course, IIT Gandhinagar, Prof. Prabhat Munshi
 
-<a class="btn btn-sm z-depth-0" role="button" href="https://github.com/Tanushka-Sonde/Multi-Parametric-Retinal-Diagnostics"><i class="fa-brands fa-github"></i> GitHub</a>
+<a class="btn btn-sm z-depth-0" role="button" href="https://github.com/Tanushka-Sonde/Multi-Parametric-Retinal-Diagnostics"><i class="fa-brands fa-github"></i> GitHub</a> <a class="btn btn-sm z-depth-0" role="button" href="/assets/pdf/posters/retinal-diagnostics-poster.pdf" target="_blank"><i class="fa-solid fa-file-pdf"></i> Poster</a> <a class="btn btn-sm z-depth-0" role="button" href="/blog/2026/retinal-oct-physics-features/"><i class="fa-solid fa-pen"></i> Blog post</a>
 
 ## What I did
 

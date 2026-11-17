@@ -21,7 +21,7 @@ nav_order: 3
       <div class="card h-100 hoverable">
         {% if thumb_file %}
           <a href="{{ p.pdf | relative_url }}" target="_blank" rel="noopener">
-            <img src="{{ p.thumbnail | relative_url }}" class="card-img-top" alt="{{ p.title }}" style="object-fit: cover; max-height: 320px;">
+            <img src="{{ p.thumbnail | relative_url }}" class="card-img-top" alt="{{ p.title }}" style="object-fit: cover; object-position: top; height: 260px;">
           </a>
         {% endif %}
         <div class="card-body">

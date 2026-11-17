@@ -10,7 +10,7 @@ github: https://github.com/IITGN-Robotics/Addverb-Heal-Teleop
 
 **Jan – Apr 2025** · Prof.Harish Palanthandalam-Madapusi, IIT Gandhinagar
 
-<a class="btn btn-sm z-depth-0" role="button" href="https://github.com/IITGN-Robotics/Addverb-Heal-Teleop"><i class="fa-brands fa-github"></i> GitHub</a>
+<a class="btn btn-sm z-depth-0" role="button" href="https://github.com/IITGN-Robotics/Addverb-Heal-Teleop"><i class="fa-brands fa-github"></i> GitHub</a> <a class="btn btn-sm z-depth-0" role="button" href="/assets/pdf/posters/teleoperation-poster.pdf" target="_blank"><i class="fa-solid fa-file-pdf"></i> Poster</a> <a class="btn btn-sm z-depth-0" role="button" href="/blog/2026/teleoperating-manipulators-vision-gestures/"><i class="fa-solid fa-pen"></i> Blog post</a>
 
 ## What I did
 

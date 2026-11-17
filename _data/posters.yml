@@ -6,16 +6,34 @@
 #   title      (required)
 #   pdf        (required) path under assets/pdf/posters/
 #   kind       Poster | Slides | Talk
-#   venue      course, lab meeting, conference, ...
+#   venue      course, lab, conference, ...
 #   date       e.g. "Nov 2026"
 #   thumbnail  optional image under assets/img/posters/ (e.g. a PNG of the first page)
 #   project    optional slug in _projects/ (links "Project page")
 #   blog       optional link to a related blog post
 
-- title: "Multi-Parametric Retinal Diagnostics: Reproduction and Extension"
+- title: "SketchWorld: Camera Control Scene Generation from Sketches"
   kind: Poster
-  venue: Project Course, IIT Gandhinagar (Prof. Prabhat Munshi)
+  venue: Computer Vision Lab (CVIG), IIT Gandhinagar · Advisor Prof. Shanmuganathan Raman
+  date: "Nov 2026"
+  pdf: assets/pdf/posters/sketchworld-poster.pdf
+  thumbnail: assets/img/posters/sketchworld-poster.png
+  project: sketchworld
+
+- title: "Multi-Parametric Non-Destructive Retinal Diagnostics"
+  kind: Poster
+  venue: Project Course (NDT), IIT Gandhinagar · Prof. Prabhat Munshi
   date: "Nov 2026"
   pdf: assets/pdf/posters/retinal-diagnostics-poster.pdf
   thumbnail: assets/img/posters/retinal-diagnostics-poster.png
   project: retinal-diagnostics
+  blog: /blog/2026/retinal-oct-physics-features/
+
+- title: "Teleoperating Manipulators using Vision and Gestures"
+  kind: Poster
+  venue: IITGN Robotics · Advisor Prof. Harish Palanthandalam-Madapusi
+  date: "Apr 2025"
+  pdf: assets/pdf/posters/teleoperation-poster.pdf
+  thumbnail: assets/img/posters/teleoperation-poster.png
+  project: arm-teleoperation-cv
+  blog: /blog/2026/teleoperating-manipulators-vision-gestures/
