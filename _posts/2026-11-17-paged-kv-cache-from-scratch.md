@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Building a vLLM-style paged KV cache from scratch"
+title: "Paging Memory Like an OS: Building a Mini vLLM from Scratch"
 date: 2026-11-17 09:00:00
 description: What makes LLM serving fast, rebuilt on a tiny GPT in plain PyTorch, with every optimization measured.
 tags: [llm-systems, pytorch, inference]

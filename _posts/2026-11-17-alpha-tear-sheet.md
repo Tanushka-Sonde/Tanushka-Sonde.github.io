@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Evaluating a signal, not a portfolio: building an alpha tear sheet"
+title: "Is the Signal Real? Building an Alpha Tear Sheet"
 date: 2026-11-17 08:30:00
 description: IC, Newey-West t-stats, IC decay and quantile spreads, explained one plot at a time.
 tags: [quant, statistics]

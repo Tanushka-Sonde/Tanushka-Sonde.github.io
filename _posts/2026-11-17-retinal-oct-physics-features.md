@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "When 100% accuracy is a scanner, not a disease: physics features for retinal OCT"
+title: "The Scanner Was the Diagnosis: Physics and Fractals in Retinal OCT"
 date: 2026-11-17 07:30:00
 description: Reproducing a physics-based OCT classifier, finding the confound behind its perfect triage, and building explainable features that hold up across scanners.
 tags: [medical-imaging, computer-vision, research]

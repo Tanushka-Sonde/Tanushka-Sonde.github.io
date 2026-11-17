@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Why my backtest Sharpe was lying"
+title: "The Sharpe Ratio That Lied: Hunting Hidden Beta in My Backtest"
 date: 2026-11-17 08:00:00
 description: A Sharpe of 0.39 that turned out to be hidden market beta, and the statistics I used to catch it, in plain English.
 tags: [quant, statistics, backtesting]

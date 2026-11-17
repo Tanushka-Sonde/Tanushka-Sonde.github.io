@@ -332,7 +332,7 @@ jekyll-archives:
       categories: "/blog/:type/:name/"
 
 display_tags: [] # these tags will be displayed on the front page of your blog
-display_categories: ["notes"] # these categories will be displayed on the front page of your blog
+display_categories: [] # no category bar on the blog page
 
 # -----------------------------------------------------------------------------
 # Jekyll Scholar

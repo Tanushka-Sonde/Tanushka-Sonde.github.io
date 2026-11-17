@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Teleoperating a robot arm with an ArUco marker and a pinch gesture"
+title: "Puppeteering a Robot Arm with a Marker and a Pinch"
 date: 2026-11-17 07:00:00
 description: RealSense + ArUco for position, MediaPipe for the gripper, Mink IK in MuJoCo, and why the real arm jittered when the simulation didn't.
 tags: [robotics, computer-vision, ros]
