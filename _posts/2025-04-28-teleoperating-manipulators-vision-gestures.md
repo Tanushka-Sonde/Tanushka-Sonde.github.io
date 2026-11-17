@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Puppeteering a Robot Arm with Hand Gestures"
-date: 2026-11-17 07:00:00
+date: 2025-04-28 10:00:00
 description: RealSense + ArUco for position, MediaPipe for the gripper, Mink IK in MuJoCo, and why the real arm jittered when the simulation didn't.
 tags: [robotics, computer-vision, ros]
 categories: notes

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Getting OpenVLA ready for a Franka FR3: notes on a sim-to-real pipeline"
-date: 2026-11-17
+date: 2025-07-31
 description: Building MuJoCo environments, a differential-IK data collector and a LoRA-ready dataset for a 7B vision-language-action model.
 tags: [robotics, vla, mujoco]
 categories: notes

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "When 100% Accuracy Is a Scanner, Not a Disease: Physics Features for Retinal OCT"
-date: 2026-11-17 07:30:00
+date: 2026-11-15 10:00:00
 description: Reproducing a physics-based OCT classifier, finding the confound behind its perfect triage, and building explainable features that hold up across scanners.
 tags: [medical-imaging, computer-vision, research]
 categories: notes

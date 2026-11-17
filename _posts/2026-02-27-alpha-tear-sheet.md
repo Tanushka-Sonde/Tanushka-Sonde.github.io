@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Is the Signal Real? Building an Alpha Tear Sheet"
-date: 2026-11-17 08:30:00
+date: 2026-02-27 10:00:00
 description: IC, Newey-West t-stats, IC decay and quantile spreads, explained one plot at a time.
 tags: [quant, statistics]
 categories: notes
