@@ -24,13 +24,13 @@ latest_posts:
   enabled: false
 ---
 
-I'm a third-year B.Tech student in Mechanical Engineering at IIT Gandhinagar, minoring in Artificial Intelligence. I work on applied machine learning, mostly computer vision and LLM systems, and I like building things from first principles to understand how they work.
+Third-year B.Tech student in Mechanical Engineering (Minor in AI) at IIT Gandhinagar, working on applied ML: computer vision and LLM systems.
 
-I'm currently doing research at the Computer Vision Lab, IIT Gandhinagar, with Prof. Shanmuganathan Raman on camera-controlled scene generation from sketches. In summer 2026 I interned at EY GDS, building an agentic multimodal RAG knowledge assistant, and at Deloitte India, building a proof-of-concept local RAG policy assistant.
-
-Outside of that, I've built a vLLM-style paged KV cache inference engine from scratch, a quant research and backtesting framework, and several computer vision pipelines. Before moving into ML, I worked on robot manipulation with ROS 2 and MuJoCo: I built a vision-based teleoperation system for a robotic arm, and a simulation-to-real pipeline for running the OpenVLA vision-language-action model on a Franka FR3.
-
-I'm open to research and engineering internship opportunities. The best way to reach me is [email](mailto:tanushka.sonde@iitgn.ac.in).
+- **Research:** camera-controlled scene generation from sketches, Computer Vision Lab, IITGN (Prof. Shanmuganathan Raman)
+- **Internships (summer 2026):** agentic multimodal RAG assistant at EY GDS; local RAG policy assistant at Deloitte India
+- **Built from scratch:** a vLLM-style paged KV cache inference engine and a quant research and backtesting framework
+- **Robotics:** vision-based arm teleoperation, and a sim-to-real pipeline for OpenVLA on a Franka FR3 (ROS 2, MuJoCo)
+- **Open to:** research and engineering internships. Reach me by [email](mailto:tanushka.sonde@iitgn.ac.in)
 
 ## News
 

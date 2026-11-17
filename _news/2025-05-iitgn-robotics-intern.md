@@ -1,8 +1,8 @@
 ---
 layout: post
-date: 2026-11-10
+date: 2025-05-01
 inline: true
 related_posts: false
 ---
 
-Launched this website.
+Research intern at IITGN Robotics.
