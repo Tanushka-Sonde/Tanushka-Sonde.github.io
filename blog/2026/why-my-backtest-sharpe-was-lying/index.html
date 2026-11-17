@@ -1,0 +1,308 @@
+<!DOCTYPE html> <html lang="en"> <head> <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <title> Why my backtest Sharpe was lying | Tanushka Sonde </title> <meta name="author" content="Tanushka Anand Sonde"> <meta name="description" content="A Sharpe of 0.39 that turned out to be hidden market beta, and the statistics I used to catch it, in plain English."> <meta name="keywords" content="Tanushka Sonde, machine learning, computer vision, LLM systems, IIT Gandhinagar"> <meta property="og:site_name" content="Tanushka Sonde"> <meta property="og:type" content="article"> <meta property="og:title" content="Tanushka Sonde | Why my backtest Sharpe was lying"> <meta property="og:url" content="https://tanushka-sonde.github.io/blog/2026/why-my-backtest-sharpe-was-lying/"> <meta property="og:description" content="A Sharpe of 0.39 that turned out to be hidden market beta, and the statistics I used to catch it, in plain English."> <meta property="og:locale" content="en"> <meta name="twitter:card" content="summary"> <meta name="twitter:title" content="Why my backtest Sharpe was lying"> <meta name="twitter:description" content="A Sharpe of 0.39 that turned out to be hidden market beta, and the statistics I used to catch it, in plain English."> <script type="application/ld+json">
+    {
+        "author":
+        {
+            "@type": "Person",
+            "name": "Tanushka Anand Sonde"
+        },
+        "url": "https://tanushka-sonde.github.io/blog/2026/why-my-backtest-sharpe-was-lying/",
+        "@type": "BlogPosting",
+        "description": "A Sharpe of 0.39 that turned out to be hidden market beta, and the statistics I used to catch it, in plain English.",
+        "headline": "Why my backtest Sharpe was lying",
+        
+        "sameAs": ["https://github.com/Tanushka-Sonde","https://www.linkedin.com/in/tanushka-sonde-97a01b28a",null],
+        
+        "name": "Tanushka Anand Sonde",
+        "@context": "https://schema.org"
+    }
+  </script> <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' data: https:; media-src 'self' https:; frame-src 'self' https:; connect-src 'self' https:;"> <style>
+  :root {
+    --max-content-width: 930px;
+  }
+</style> <link rel="stylesheet" href="/assets/css/tailwind.css?v=50c64c15cbb9fd1ce6056fdb8bcb4b62"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tocbot@4.36.4/dist/tocbot.css" integrity="sha256-zTN0r+0OKaIv2xqeNNIYxNk0pWJ6+IqPGc1iDgVzWF0=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" integrity="sha256-MVopmdyC2tYTiJ8wlktf0uh0v4NgT+vNdyVFepi7Q0c=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.5/css/academicons.min.css" integrity="sha256-SzrCOBJbGVFMahewkgjwnApaV2+av1DwMAA+/QGLyZw=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/scholar-icons@1.0.3/css/scholar-icons.css" integrity="sha256-VY3hHVj/hNX3fYG6wtbA6TcKJQl7+FthzGSyIB64klY=" crossorigin="anonymous"> <link defer rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&amp;display=swap"> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-github.css?v=591dab5a4e56573bf4ef7fd332894c99" media="" id="highlight_theme_light"> <link rel="shortcut icon" href="/assets/img/favicon.svg?v=e706e5bb9b907ea26c0086446d4028f0"> <link rel="stylesheet" href="/assets/css/main.css?v=3116ba77db9ee1581d05bb3e86fbf7f1"> <link rel="canonical" href="https://tanushka-sonde.github.io/blog/2026/why-my-backtest-sharpe-was-lying/"> <script src="/assets/js/theme.js?v=5286c3e4c334d0ecb8fc0c40ff4fa7ec"></script> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-native.css?v=5847e5ed4a4568527aa6cfab446049ca" media="none" id="highlight_theme_dark"> <script>
+    initTheme();
+  </script> </head> <body class="fixed-top-nav "> <header> <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation"> <div class="container"> <a class="navbar-brand title font-weight-lighter" href="/"> Tanushka Sonde </a> <button class="navbar-toggler collapsed navbar-toggler-main" type="button" data-nav-toggle="navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar top-bar"></span> <span class="icon-bar middle-bar"></span> <span class="icon-bar bottom-bar"></span> </button> <div class="collapse navbar-collapse navbar-collapse-main" id="navbarNav"> <ul class="navbar-nav navbar-menu-list flex-nowrap"> <li class="nav-item "> <a class="nav-link" href="/">About </a> </li> <li class="nav-item "> <a class="nav-link" href="/projects/">Projects </a> </li> <li class="nav-item active"> <a class="nav-link" href="/blog/">Blog </a> </li> <li class="nav-item "> <a class="nav-link" href="/posters/">Posters </a> </li> <li class="nav-item "> <a class="nav-link" href="/cv/">CV </a> </li> <li class="nav-item"> <button id="search-toggle" type="button" title="Search" aria-label="Open search"> <span class="nav-link">ctrl k <i class="fa-solid fa-magnifying-glass"></i></span> </button> </li> <li class="toggle-container"> <button id="light-toggle" type="button" title="Change theme" aria-label="Change color theme"> <i class="fa-half-sun-moon" id="light-toggle-system"></i> <i class="fa-solid fa-moon" id="light-toggle-dark"></i> <i class="fa-solid fa-sun" id="light-toggle-light"></i> </button> </li> </ul> </div> </div> </nav> </header> <div class="container mt-5" role="main"> <div class="row"> <div class="col-sm-3"> <nav id="toc-sidebar" class="sticky-top toc toc-sidebar" aria-label="Table of contents" data-toc-collapse="expanded" data-toc-collapse-depth=""></nav> </div> <div class="col-sm-9"> <div class="post"> <header class="post-header"> <h1 class="post-title">Why my backtest Sharpe was lying</h1> <p class="post-meta"> Created on November 17, 2026 </p> <p class="post-tags"> <a href="/blog/2026"> <i class="fa-solid fa-calendar fa-sm"></i> 2026 </a>   ·   <a href="/blog/tag/quant"> <i class="fa-solid fa-hashtag fa-sm"></i> quant</a>   <a href="/blog/tag/statistics"> <i class="fa-solid fa-hashtag fa-sm"></i> statistics</a>   <a href="/blog/tag/backtesting"> <i class="fa-solid fa-hashtag fa-sm"></i> backtesting</a>   ·   <a href="/blog/category/notes"> <i class="fa-solid fa-tag fa-sm"></i> notes</a> </p> </header> <article class="post-content"> <div id="markdown-content"> <p>My first backtest of a cross-sectional ML signal on 70 US large caps showed a <strong>net Sharpe of 0.39</strong>. That’s not spectacular, but it’s respectable for a market-neutral long/short book on mega-caps. This post explains why that number was wrong and which tools showed it.</p> <p>The short version:</p> <ul> <li>The book had a hidden <strong>market beta of 0.19</strong> (t = 7.8).</li> <li>Made truly beta-neutral, the same signal earns a <strong>Sharpe of −0.28</strong> after costs.</li> <li>Against the 24 configurations I tried, its <strong>Deflated Sharpe Ratio is about 0</strong>.</li> <li> <strong>0 of 5</strong> independent out-of-sample paths are profitable.</li> </ul> <p>Everything here comes from my <a href="https://github.com/Tanushka-Sonde/alpha-research-framework" rel="external nofollow noopener" target="_blank">alpha research framework</a>.</p> <h2 id="the-setup">The setup</h2> <ul> <li> <strong>Universe:</strong> 70 large caps across all 11 GICS sectors, 10 years of daily data.</li> <li> <strong>Features:</strong> 20 technical features plus 6 classic equity factors (12-1 momentum, distance from the 52-week high, beta, idiosyncratic volatility, Amihud illiquidity, max return). Every feature is <strong>ranked across stocks each day</strong>.</li> <li> <strong>Target:</strong> the cross-sectional rank of the 5-day forward return.</li> <li> <strong>Model:</strong> one pooled LightGBM model across all stocks.</li> <li> <strong>Portfolio:</strong> long the top quintile, short the bottom quintile, with 7 bps of costs on every trade.</li> </ul> <h2 id="lie-1-market-neutral-wasnt">Lie #1: “market-neutral” wasn’t</h2> <p>“Dollar-neutral” means the money on the long side equals the money on the short side. That is <strong>not</strong> the same as market-neutral. If the longs are high-beta stocks and the shorts are low-beta ones, the book is net long the market even though it is balanced in dollars. Over a bull market, that exposure looks like alpha.</p> <p>That is exactly what happened. One of the model’s top features was <code class="language-plaintext highlighter-rouge">beta_63</code>, so it learned to like high-beta stocks. A regression of daily returns on market, momentum and short-term reversal factors made it obvious:</p> <table> <thead> <tr> <th>Same signal, portfolio built as…</th> <th style="text-align: right">Net Sharpe</th> <th style="text-align: right">Market beta (t)</th> <th style="text-align: right">Alpha (t)</th> </tr> </thead> <tbody> <tr> <td>Dollar-neutral</td> <td style="text-align: right">0.39</td> <td style="text-align: right"><strong>0.19 (7.8)</strong></td> <td style="text-align: right">0.5% (0.19)</td> </tr> <tr> <td>Dollar <strong>and</strong> beta neutral</td> <td style="text-align: right"><strong>−0.28</strong></td> <td style="text-align: right">0.04 (2.4)</td> <td style="text-align: right">−2.9% (−1.10)</td> </tr> </tbody> </table> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/blog/alpha/ablation_beta-480.webp 480w,/assets/img/blog/alpha/ablation_beta-800.webp 800w,/assets/img/blog/alpha/ablation_beta-1400.webp 1400w," type="image/webp" sizes="95vw"></source> <img src="/assets/img/blog/alpha/ablation_beta.png" class="img-fluid rounded z-depth-1" width="100%" height="auto" data-zoomable="" loading="lazy" onerror="this.onerror=null; document.querySelectorAll('.responsive-img-srcset').forEach(function (n) { n.remove(); });"> </picture> <figcaption class="caption">The same signal with and without beta neutralization.</figcaption> </figure> <p>The fix is to project the weights so they are orthogonal to both a vector of ones (dollar-neutral) and the vector of betas (beta-neutral). Once that exposure is gone, the edge goes with it.</p> <p><strong>Lesson:</strong> always regress a “neutral” strategy on the market before believing its Sharpe.</p> <h2 id="lie-2-one-backtest-path-has-no-error-bar">Lie #2: one backtest path has no error bar</h2> <p>A walk-forward backtest gives you exactly one equity curve, and one Sharpe ratio with no error bar.</p> <p><strong>Combinatorial Purged Cross-Validation (CPCV)</strong> fixes that:</p> <ol> <li>Split time into 6 groups.</li> <li>Test on every combination of 2 groups: C(6,2) = 15 splits.</li> <li>Stitch the splits into <strong>5 complete, independent out-of-sample paths</strong>.</li> </ol> <p>Every split is purged of overlapping labels and embargoed, the same as in the walk-forward. The result is a distribution instead of a single number: Sharpe <strong>−0.29 ± 0.34</strong>, with 0 of 5 paths positive. The loss isn’t caused by one unlucky split.</p> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/blog/alpha/cpcv_paths-480.webp 480w,/assets/img/blog/alpha/cpcv_paths-800.webp 800w,/assets/img/blog/alpha/cpcv_paths-1400.webp 1400w," type="image/webp" sizes="95vw"></source> <img src="/assets/img/blog/alpha/cpcv_paths.png" class="img-fluid rounded z-depth-1" width="100%" height="auto" data-zoomable="" loading="lazy" onerror="this.onerror=null; document.querySelectorAll('.responsive-img-srcset').forEach(function (n) { n.remove(); });"> </picture> <figcaption class="caption">Five CPCV out-of-sample paths.</figcaption> </figure> <h2 id="lie-3-the-best-of-24-tries-is-biased-upward">Lie #3: the best of 24 tries is biased upward</h2> <p>I didn’t run one configuration. I ran a grid of <strong>24</strong>:</p> <ul> <li>forward-return horizon</li> <li>model</li> <li>portfolio rule</li> <li>quantile cut-off</li> </ul> <p>If you pick the best of 24 and report its Sharpe, you’re reporting the maximum of 24 noisy numbers, which is biased upward even if none of them has any skill.</p> <h3 id="probabilistic-sharpe-ratio-psr">Probabilistic Sharpe Ratio (PSR)</h3> <p>PSR asks: given this track record’s length, skew and fat tails, what’s the probability the <em>true</em> Sharpe is above zero? For the main configuration it was <strong>0.21</strong>, so not convincing.</p> <h3 id="deflated-sharpe-ratio-dsr">Deflated Sharpe Ratio (DSR)</h3> <p>DSR raises the bar. It works out the Sharpe you would expect from the <em>luckiest</em> of N strategies with zero skill, using the spread of Sharpes you actually observed, and then asks whether your winner beats that.</p> <p>With 24 trials, luck alone would be expected to produce a daily Sharpe of about 0.10, roughly <strong>1.6 annualized</strong>. The best trial was nowhere near that, so DSR ≈ <strong>0.00</strong>.</p> <h3 id="probability-of-backtest-overfitting-pbo">Probability of Backtest Overfitting (PBO)</h3> <p>PBO, computed with CSCV over 12,870 splits, asks how often the trial ranked best in-sample ends up in the bottom half out-of-sample. It came out at <strong>0.21</strong>, which looks reassuring.</p> <p>The full picture is more subtle. The trial <em>rankings</em> are stable, mostly because daily rebalancing is always the worst. But the in-sample winner still <strong>loses money out-of-sample in 86% of splits</strong>. Stable rankings don’t mean profitability.</p> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/blog/alpha/experiments_pbo-480.webp 480w,/assets/img/blog/alpha/experiments_pbo-800.webp 800w,/assets/img/blog/alpha/experiments_pbo-1400.webp 1400w," type="image/webp" sizes="95vw"></source> <img src="/assets/img/blog/alpha/experiments_pbo.png" class="img-fluid rounded z-depth-1" width="100%" height="auto" data-zoomable="" loading="lazy" onerror="this.onerror=null; document.querySelectorAll('.responsive-img-srcset').forEach(function (n) { n.remove(); });"> </picture> <figcaption class="caption">All 24 trials, net of costs.</figcaption> </figure> <h2 id="before-neutralization-the-warning-signs-were-already-there">Before neutralization, the warning signs were already there</h2> <p>Even before I found the beta problem, these tools were sceptical: DSR was 0.02 and PBO was 0.36, while the headline Sharpe looked fine. That gap is the reason to build the tools at all. A single backtest number tells you very little about whether a strategy is real.</p> <h2 id="things-id-tell-myself-before-starting">Things I’d tell myself before starting</h2> <ul> <li> <strong>Make every leakage control testable.</strong> One test feeds the backtester a perfect-foresight signal (it must profit) and a same-day signal (it must not). That proves the P&amp;L uses yesterday’s weights.</li> <li> <strong>Record every trial</strong>, including the bad ones. You can’t deflate a Sharpe if you’ve forgotten how many things you tried.</li> <li> <strong>Costs decide.</strong> All 8 daily-rebalanced trials lost heavily at 7 bps, with up to 111% daily turnover. Smoothing the signal and rebalancing weekly cut turnover to about 20% a day, but that still wasn’t enough.</li> <li> <strong>Be honest about the limits.</strong> The universe has survivorship bias (today’s large caps). The cost model is flat. The 24 trials are correlated, so the deflation is somewhat conservative.</li> </ul> <p>The signal does have a little real information. That is a separate question, which I cover in the <a href="/blog/2026/alpha-tear-sheet/">next post on the alpha tear sheet</a>.</p> <h2 id="references">References</h2> <ul> <li>Bailey &amp; López de Prado, “The Sharpe Ratio Efficient Frontier” (2012): Probabilistic Sharpe Ratio</li> <li>Bailey &amp; López de Prado, “The Deflated Sharpe Ratio” (2014)</li> <li>Bailey, Borwein, López de Prado &amp; Zhu, “The Probability of Backtest Overfitting” (2015)</li> <li>López de Prado, <em>Advances in Financial Machine Learning</em> (2018): purging, embargo, CPCV</li> </ul> </div> </article> <br> <hr> <br> <h2 class="text-3xl font-semibold mb-4 mt-12">Enjoy Reading This Article?</h2> <p class="mb-2">Here are some more articles you might like to read next:</p> <ul class="list-disc pl-7 my-3 space-y-2 marker:text-[var(--global-theme-color)]"> <li class="leading-relaxed"> <a class="underline decoration-1 hover:text-[var(--global-hover-color)]" href="/blog/2026/paged-kv-cache-from-scratch/">Building a vLLM-style paged KV cache from scratch</a> </li> <li class="leading-relaxed"> <a class="underline decoration-1 hover:text-[var(--global-hover-color)]" href="/blog/2026/alpha-tear-sheet/">Evaluating a signal, not a portfolio: building an alpha tear sheet</a> </li> <li class="leading-relaxed"> <a class="underline decoration-1 hover:text-[var(--global-hover-color)]" href="/blog/2026/retinal-oct-physics-features/">When 100% accuracy is a scanner, not a disease: physics features for retinal OCT</a> </li> <li class="leading-relaxed"> <a class="underline decoration-1 hover:text-[var(--global-hover-color)]" href="/blog/2026/teleoperating-manipulators-vision-gestures/">Teleoperating a robot arm with an ArUco marker and a pinch gesture</a> </li> </ul> </div> </div> </div> </div> <footer class="fixed-bottom" role="contentinfo"> <div class="container mt-0"> © Copyright 2026 Tanushka Anand Sonde. Built with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a>, hosted on <a href="https://pages.github.com/" rel="external nofollow noopener" target="_blank">GitHub Pages</a>. </div> </footer> <script>
+  window.alFolio = {
+    compatBootstrap: false
+  };
+</script> <script src="/assets/js/nav-toggle.js?v=141bd79a73ebc0f0b6ea58e440ae79fc"></script> <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script> <script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@5.0.0/imagesloaded.pkgd.min.js" integrity="sha256-htrLFfZJ6v5udOG+3kNLINIKh2gvoKqwEhHYfTTMICc=" crossorigin="anonymous"></script> <script defer src="/assets/js/masonry.js?v=e49affc7bd2646f6acdad1dbe02c2359" type="text/javascript"></script> <script src="/assets/js/tooltips-setup.js?v=fe487e99db6c43751e6e7bdb2d6a0611"></script> <script defer src="https://cdn.jsdelivr.net/npm/tocbot@4.36.4/dist/tocbot.min.js" integrity="sha256-lo/r+jQ81wWrxdIiiiEEd538z4+dTJTt+leOuAS7GCw=" crossorigin="anonymous"></script> <script src="/assets/js/no_defer.js?v=53b1b1a645525975c963ce8bf8bfefcf"></script> <script defer src="/assets/js/common.js?v=87baac90f765f2f3362dcf6aaf312a8a"></script> <script defer src="/assets/js/copy_code.js?v=c8a01c11a92744d44b093fc3bda915df" type="text/javascript"></script> <script defer src="/assets/js/jupyter_new_tab.js?v=896d254890d9b47f0281f63bfccf0dee"></script> <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script> <script defer src="/assets/al_img_tools/js/zoom.js"></script> <script src="https://cdn.jsdelivr.net/npm/vanilla-back-to-top@7.2.1/dist/vanilla-back-to-top.min.js" integrity="sha256-uMJJ3EoTyfRBoTbR+lrfu1uRQ87RZG8AR3cVNuQVeFg=" crossorigin="anonymous"></script> <script>
+    addBackToTop();
+  </script> <script type="module" src="/assets/al_search/js/search/ninja-keys.min.js"></script> <ninja-keys hidebreadcrumbs noautoloadmdicons placeholder="Type to start searching"></ninja-keys> <script src="/assets/al_search/js/search-setup.js"></script> <script>
+// get the ninja-keys element
+const ninja = document.querySelector('ninja-keys');
+
+// add the home and posts menu items
+ninja.data = [{
+    id: "nav-about",
+    title: "About",
+    section: "Navigation",
+    handler: () => {
+      window.location.href = "/";
+    },
+  },{id: "nav-projects",
+          title: "Projects",
+          description: "Research, internship, and personal projects, grouped by area.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/projects/";
+          },
+        },{id: "nav-blog",
+          title: "Blog",
+          description: "",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/blog/";
+          },
+        },{id: "nav-posters",
+          title: "Posters",
+          description: "Posters and presentation slides from my projects.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/posters/";
+          },
+        },{id: "nav-cv",
+          title: "CV",
+          description: "",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/cv/";
+          },
+        },{id: "post-building-a-vllm-style-paged-kv-cache-from-scratch",
+        
+          title: "Building a vLLM-style paged KV cache from scratch",
+        
+        description: "What makes LLM serving fast, rebuilt on a tiny GPT in plain PyTorch, with every optimization measured.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/paged-kv-cache-from-scratch/";
+          
+        },
+      },{id: "post-evaluating-a-signal-not-a-portfolio-building-an-alpha-tear-sheet",
+        
+          title: "Evaluating a signal, not a portfolio: building an alpha tear sheet",
+        
+        description: "IC, Newey-West t-stats, IC decay and quantile spreads, explained one plot at a time.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/alpha-tear-sheet/";
+          
+        },
+      },{id: "post-why-my-backtest-sharpe-was-lying",
+        
+          title: "Why my backtest Sharpe was lying",
+        
+        description: "A Sharpe of 0.39 that turned out to be hidden market beta, and the statistics I used to catch it, in plain English.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/why-my-backtest-sharpe-was-lying/";
+          
+        },
+      },{id: "post-when-100-accuracy-is-a-scanner-not-a-disease-physics-features-for-retinal-oct",
+        
+          title: "When 100% accuracy is a scanner, not a disease: physics features for retinal...",
+        
+        description: "Reproducing a physics-based OCT classifier, finding the confound behind its perfect triage, and building explainable features that hold up across scanners.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/retinal-oct-physics-features/";
+          
+        },
+      },{id: "post-teleoperating-a-robot-arm-with-an-aruco-marker-and-a-pinch-gesture",
+        
+          title: "Teleoperating a robot arm with an ArUco marker and a pinch gesture",
+        
+        description: "RealSense + ArUco for position, MediaPipe for the gripper, Mink IK in MuJoCo, and why the real arm jittered when the simulation didn&#39;t.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/teleoperating-manipulators-vision-gestures/";
+          
+        },
+      },{id: "news-joined-iitgn-robotics",
+          title: 'Joined IITGN Robotics.',
+          description: "",
+          section: "News",},{id: "news-research-intern-at-iitgn-robotics",
+          title: 'Research intern at IITGN Robotics.',
+          description: "",
+          section: "News",},{id: "news-summer-intern-at-ey-gds-mumbai-emerging-technologies-bfsi",
+          title: 'Summer intern at EY GDS Mumbai (Emerging Technologies, BFSI).',
+          description: "",
+          section: "News",},{id: "news-summer-intern-at-deloitte-india-technology-amp-transformation",
+          title: 'Summer intern at Deloitte India (Technology &amp;amp; Transformation).',
+          description: "",
+          section: "News",},{id: "news-started-research-on-sketch-based-camera-controlled-scene-generation-at-the-computer-vision-lab-iit-gandhinagar",
+          title: 'Started research on sketch-based, camera-controlled scene generation at the Computer Vision Lab, IIT...',
+          description: "",
+          section: "News",},{id: "projects-agentic-multimodal-rag-knowledge-assistant",
+          title: 'Agentic Multimodal RAG Knowledge Assistant',
+          description: "Self-correcting multi-agent LangGraph RAG with hybrid text and ColPali visual retrieval.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/agentic-multimodal-rag/";
+            },},{id: "projects-alpha-research-amp-backtesting-framework",
+          title: 'Alpha Research &amp;amp; Backtesting Framework',
+          description: "Quant research pipeline with LightGBM signals, purged walk-forward CV and a realistic backtester.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/alpha-research-framework/";
+            },},{id: "projects-arm-manipulator-teleoperation-using-computer-vision",
+          title: 'Arm Manipulator Teleoperation using Computer Vision',
+          description: "Vision-based Cartesian teleoperation of the Addverb Heal arm with RealSense, ArUco and MuJoCo.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/arm-teleoperation-cv/";
+            },},{id: "projects-box-office-bomb-data-pipeline",
+          title: 'Box Office Bomb Data Pipeline',
+          description: "Scraped, validated and enriched 138 box-office bomb records into an analytics-ready dataset.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/box-office-bomb-pipeline/";
+            },},{id: "projects-city-scale-3d-reconstruction-structure-from-motion-from-tourist-photos",
+          title: 'City-Scale 3D Reconstruction: Structure from Motion from Tourist Photos',
+          description: "City-scale Structure-from-Motion from tourist photos, with 9 core algorithms implemented from scratch.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/city-scale-sfm/";
+            },},{id: "projects-decision-tree-based-human-activity-recognition-har",
+          title: 'Decision Tree Based Human Activity Recognition (HAR)',
+          description: "Decision tree implemented from scratch for human activity recognition on UCI-HAR accelerometer data.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/decision-tree-har/";
+            },},{id: "projects-deep-learning-optimizers-loss-landscapes-amp-regularization",
+          title: 'Deep Learning Optimizers, Loss Landscapes &amp;amp; Regularization',
+          description: "Optimizers on classic loss surfaces, Adam learning-rate schedules, and dropout on FashionMNIST.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/dl-optimizers-loss-landscapes/";
+            },},{id: "projects-deep-learning-and-regularization-experiments",
+          title: 'Deep Learning and Regularization Experiments',
+          description: "Next-word prediction MLP, a regularization study on make_moons, and MLP/CNN models on MNIST.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/dl-regularization-experiments/";
+            },},{id: "projects-prompted-drywall-defect-segmentation-using-clip-conditioned-models",
+          title: 'Prompted Drywall Defect Segmentation using CLIP-Conditioned Models',
+          description: "Text-prompted crack and taping-area segmentation with a from-scratch CLIP-UNet using FiLM conditioning.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/drywall-defect-segmentation/";
+            },},{id: "projects-local-rag-based-policy-assistant",
+          title: 'Local RAG-Based Policy Assistant',
+          description: "Fully local RAG chat system for HR policy queries using Ollama and ChromaDB.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/local-rag-policy-assistant/";
+            },},{id: "projects-multi-scale-template-and-feature-matching-for-scene-search",
+          title: 'Multi-Scale Template and Feature Matching for Scene Search',
+          description: "From-scratch filtering, multiscale NCC template matching, and Harris/DoG feature matching.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/multi-scale-template-matching/";
+            },},{id: "projects-optimization-and-matrix-factorization-experiments",
+          title: 'Optimization and Matrix Factorization Experiments',
+          description: "Gradient descent variants, feature scaling, autoregressive forecasting, and low-rank matrix factorization.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/optimization-matrix-factorization/";
+            },},{id: "projects-paged-kv-cache-amp-continuous-batching-inference-engine",
+          title: 'Paged KV Cache &amp;amp; Continuous Batching Inference Engine',
+          description: "vLLM-style paged KV cache and continuous batching scheduler built from scratch in PyTorch.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/paged-kv-cache-inference-engine/";
+            },},{id: "projects-multi-parametric-retinal-diagnostics-reproduction-and-extension",
+          title: 'Multi-Parametric Retinal Diagnostics: Reproduction and Extension',
+          description: "Reproduced a physics-based OCT classifier and stress-tested it with cross-scanner validation on 3 datasets.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/retinal-diagnostics/";
+            },},{id: "projects-sift-guided-optical-flow-for-lunar-descent-trajectory-reconstruction",
+          title: 'SIFT-Guided Optical Flow for Lunar Descent Trajectory Reconstruction',
+          description: "Reconstructed a metric 3D lander trajectory from Chang&#39;e-5 descent frames with SIFT-seeded KLT tracking.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/sift-optical-flow-lunar-descent/";
+            },},{id: "projects-sketchworld-camera-controlled-scene-generation-from-sketches",
+          title: 'SketchWorld: Camera-Controlled Scene Generation from Sketches',
+          description: "Camera-controlled next-view forecasting with SCEdit tuners on a frozen Stable Diffusion 1.5.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/sketchworld/";
+            },},{id: "projects-small-multimodal-experiments-clip-loss-to-vlm-adaptation",
+          title: 'Small Multimodal Experiments: CLIP Loss to VLM Adaptation',
+          description: "Symmetric CLIP loss from scratch, semantic image retrieval, and SmolVLM connector fine-tuning.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/small-multimodal-experiments/";
+            },},{id: "projects-smart-labeling-pipeline-for-scalable-data-annotation",
+          title: 'Smart Labeling Pipeline for Scalable Data Annotation',
+          description: "Labeling pipeline combining human annotation, Snorkel weak supervision, active learning and LLMs.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/smart-labeling-pipeline/";
+            },},{id: "projects-invisible-svd-based-digital-image-watermarking-system",
+          title: 'Invisible SVD-Based Digital Image Watermarking System',
+          description: "Invisible QR-code watermarking with SVD implemented from scratch, plus robustness benchmarks.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/svd-image-watermarking/";
+            },},{id: "projects-small-models-and-attention-transformers-from-scratch",
+          title: 'Small Models and Attention: Transformers from Scratch',
+          description: "Label smoothing, causal self-attention and a minimal Vision Transformer, built from first principles.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/transformers-from-scratch/";
+            },},{id: "projects-vision-language-policy-learning-for-robotic-manipulation",
+          title: 'Vision-Language Policy Learning for Robotic Manipulation',
+          description: "Sim-to-real pipeline and dataset for OpenVLA-7B on a Franka FR3 (fine-tuning not completed).",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/vision-language-policy-learning/";
+            },},{
+        id: 'social-email',
+        title: 'email',
+        section: 'Socials',
+        handler: () => {
+          window.open("mailto:%74%61%6E%75%73%68%6B%61.%73%6F%6E%64%65@%69%69%74%67%6E.%61%63.%69%6E", "_blank");
+        },
+      },{
+        id: 'social-github',
+        title: 'GitHub',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://github.com/Tanushka-Sonde", "_blank");
+        },
+      },{
+        id: 'social-linkedin',
+        title: 'LinkedIn',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://www.linkedin.com/in/tanushka-sonde-97a01b28a", "_blank");
+        },
+      },{
+        id: 'social-cv',
+        title: 'CV',
+        section: 'Socials',
+        handler: () => {
+          window.open("/assets/pdf/Tanushka_Sonde_CV.pdf", "_blank");
+        },
+      },{
+        id: 'social-rss',
+        title: 'RSS Feed',
+        section: 'Socials',
+        handler: () => {
+          window.open("/feed.xml", "_blank");
+        },
+      },{
+      id: 'light-theme',
+      title: 'Change theme to light',
+      description: 'Change the theme of the site to Light',
+      section: 'Theme',
+      handler: () => {
+        setThemeSetting("light");
+      },
+    },
+    {
+      id: 'dark-theme',
+      title: 'Change theme to dark',
+      description: 'Change the theme of the site to Dark',
+      section: 'Theme',
+      handler: () => {
+        setThemeSetting("dark");
+      },
+    },
+    {
+      id: 'system-theme',
+      title: 'Use system default theme',
+      description: 'Change the theme of the site to System Default',
+      section: 'Theme',
+      handler: () => {
+        setThemeSetting("system");
+      },
+    },];
+
+</script> <script src="/assets/al_search/js/shortcut-key.js"></script> </body> </html>

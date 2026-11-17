@@ -1,0 +1,308 @@
+<!DOCTYPE html> <html lang="en"> <head> <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <title> When 100% accuracy is a scanner, not a disease: physics features for retinal OCT | Tanushka Sonde </title> <meta name="author" content="Tanushka Anand Sonde"> <meta name="description" content="Reproducing a physics-based OCT classifier, finding the confound behind its perfect triage, and building explainable features that hold up across scanners."> <meta name="keywords" content="Tanushka Sonde, machine learning, computer vision, LLM systems, IIT Gandhinagar"> <meta property="og:site_name" content="Tanushka Sonde"> <meta property="og:type" content="article"> <meta property="og:title" content="Tanushka Sonde | When 100% accuracy is a scanner, not a disease: physics features for retinal OCT"> <meta property="og:url" content="https://tanushka-sonde.github.io/blog/2026/retinal-oct-physics-features/"> <meta property="og:description" content="Reproducing a physics-based OCT classifier, finding the confound behind its perfect triage, and building explainable features that hold up across scanners."> <meta property="og:locale" content="en"> <meta name="twitter:card" content="summary"> <meta name="twitter:title" content="When 100% accuracy is a scanner, not a disease: physics features for retinal OCT"> <meta name="twitter:description" content="Reproducing a physics-based OCT classifier, finding the confound behind its perfect triage, and building explainable features that hold up across scanners."> <script type="application/ld+json">
+    {
+        "author":
+        {
+            "@type": "Person",
+            "name": "Tanushka Anand Sonde"
+        },
+        "url": "https://tanushka-sonde.github.io/blog/2026/retinal-oct-physics-features/",
+        "@type": "BlogPosting",
+        "description": "Reproducing a physics-based OCT classifier, finding the confound behind its perfect triage, and building explainable features that hold up across scanners.",
+        "headline": "When 100% accuracy is a scanner, not a disease: physics features for retinal OCT",
+        
+        "sameAs": ["https://github.com/Tanushka-Sonde","https://www.linkedin.com/in/tanushka-sonde-97a01b28a",null],
+        
+        "name": "Tanushka Anand Sonde",
+        "@context": "https://schema.org"
+    }
+  </script> <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' data: https:; media-src 'self' https:; frame-src 'self' https:; connect-src 'self' https:;"> <style>
+  :root {
+    --max-content-width: 930px;
+  }
+</style> <link rel="stylesheet" href="/assets/css/tailwind.css?v=50c64c15cbb9fd1ce6056fdb8bcb4b62"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tocbot@4.36.4/dist/tocbot.css" integrity="sha256-zTN0r+0OKaIv2xqeNNIYxNk0pWJ6+IqPGc1iDgVzWF0=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" integrity="sha256-MVopmdyC2tYTiJ8wlktf0uh0v4NgT+vNdyVFepi7Q0c=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.5/css/academicons.min.css" integrity="sha256-SzrCOBJbGVFMahewkgjwnApaV2+av1DwMAA+/QGLyZw=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/scholar-icons@1.0.3/css/scholar-icons.css" integrity="sha256-VY3hHVj/hNX3fYG6wtbA6TcKJQl7+FthzGSyIB64klY=" crossorigin="anonymous"> <link defer rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&amp;display=swap"> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-github.css?v=591dab5a4e56573bf4ef7fd332894c99" media="" id="highlight_theme_light"> <link rel="shortcut icon" href="/assets/img/favicon.svg?v=e706e5bb9b907ea26c0086446d4028f0"> <link rel="stylesheet" href="/assets/css/main.css?v=3116ba77db9ee1581d05bb3e86fbf7f1"> <link rel="canonical" href="https://tanushka-sonde.github.io/blog/2026/retinal-oct-physics-features/"> <script src="/assets/js/theme.js?v=5286c3e4c334d0ecb8fc0c40ff4fa7ec"></script> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-native.css?v=5847e5ed4a4568527aa6cfab446049ca" media="none" id="highlight_theme_dark"> <script>
+    initTheme();
+  </script> </head> <body class="fixed-top-nav "> <header> <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation"> <div class="container"> <a class="navbar-brand title font-weight-lighter" href="/"> Tanushka Sonde </a> <button class="navbar-toggler collapsed navbar-toggler-main" type="button" data-nav-toggle="navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar top-bar"></span> <span class="icon-bar middle-bar"></span> <span class="icon-bar bottom-bar"></span> </button> <div class="collapse navbar-collapse navbar-collapse-main" id="navbarNav"> <ul class="navbar-nav navbar-menu-list flex-nowrap"> <li class="nav-item "> <a class="nav-link" href="/">About </a> </li> <li class="nav-item "> <a class="nav-link" href="/projects/">Projects </a> </li> <li class="nav-item active"> <a class="nav-link" href="/blog/">Blog </a> </li> <li class="nav-item "> <a class="nav-link" href="/posters/">Posters </a> </li> <li class="nav-item "> <a class="nav-link" href="/cv/">CV </a> </li> <li class="nav-item"> <button id="search-toggle" type="button" title="Search" aria-label="Open search"> <span class="nav-link">ctrl k <i class="fa-solid fa-magnifying-glass"></i></span> </button> </li> <li class="toggle-container"> <button id="light-toggle" type="button" title="Change theme" aria-label="Change color theme"> <i class="fa-half-sun-moon" id="light-toggle-system"></i> <i class="fa-solid fa-moon" id="light-toggle-dark"></i> <i class="fa-solid fa-sun" id="light-toggle-light"></i> </button> </li> </ul> </div> </div> </nav> </header> <div class="container mt-5" role="main"> <div class="row"> <div class="col-sm-3"> <nav id="toc-sidebar" class="sticky-top toc toc-sidebar" aria-label="Table of contents" data-toc-collapse="expanded" data-toc-collapse-depth=""></nav> </div> <div class="col-sm-9"> <div class="post"> <header class="post-header"> <h1 class="post-title">When 100% accuracy is a scanner, not a disease: physics features for retinal OCT</h1> <p class="post-meta"> Created on November 17, 2026 </p> <p class="post-tags"> <a href="/blog/2026"> <i class="fa-solid fa-calendar fa-sm"></i> 2026 </a>   ·   <a href="/blog/tag/medical-imaging"> <i class="fa-solid fa-hashtag fa-sm"></i> medical-imaging</a>   <a href="/blog/tag/computer-vision"> <i class="fa-solid fa-hashtag fa-sm"></i> computer-vision</a>   <a href="/blog/tag/research"> <i class="fa-solid fa-hashtag fa-sm"></i> research</a>   ·   <a href="/blog/category/notes"> <i class="fa-solid fa-tag fa-sm"></i> notes</a> </p> </header> <article class="post-content"> <div id="markdown-content"> <p>This is the story behind our <a href="/assets/pdf/posters/retinal-diagnostics-poster.pdf">project course poster</a> at IIT Gandhinagar. I worked with Tejaswini Rathod and Shubhabrata Sarkar, supervised by Prof. Prabhat Munshi.</p> <p>The course was on non-destructive testing (NDT). The question was whether the physics used to inspect materials can also diagnose retinas, and do it in a way a clinician can read.</p> <h2 id="the-claim-we-started-from">The claim we started from</h2> <p><strong>OCT</strong> (optical coherence tomography) is the standard retinal scan: a cross-section of the retina built from reflected light. CNNs classify OCT scans very accurately, but they are opaque. They can also learn the <strong>scanner’s signature</strong> instead of the disease.</p> <p>A published physics-based engine took a different route:</p> <ul> <li>Split each scan into a 15 × 10 grid.</li> <li>In every cell, measure two texture quantities: the <strong>KT-1 slope</strong> (how texture peaks fade under blur) and the <strong>Hurst coefficient</strong> (roughness across scales).</li> <li>Classify with a random forest.</li> </ul> <p>It reported <strong>100% healthy-eye triage</strong> on the OCTID dataset. Our goal was to test that claim, then build physics features that are explainable <em>and</em> hold up across datasets and scanners.</p> <h2 id="step-1-reproduce-it-then-look-at-the-data">Step 1: reproduce it, then look at the data</h2> <p>I reproduced the engine from scratch and matched the paper:</p> <ul> <li> <strong>NORMAL</strong> precision and recall: <strong>1.00 / 1.00</strong> </li> <li>Overall accuracy: <strong>68.3%</strong> (paper: 71%)</li> <li>The same top-15 features (all Hurst), in the same grid rows</li> </ul> <p>Then I looked at the data itself. In OCTID, <strong>healthy and diseased scans come from different scanners</strong>. Their image sizes don’t even overlap, and every healthy file is a <code class="language-plaintext highlighter-rouge">.jpg</code> while every diseased file is a <code class="language-plaintext highlighter-rouge">.jpeg</code>. <strong>Image size alone separates healthy from diseased with 100% accuracy.</strong></p> <p>The confound also flows through the physics. The preprocessing upsamples healthy scans by about 1.32× and diseased ones by about 1.0×. Upsampling smooths texture, which raises the Hurst coefficient: the Spearman correlation between upsampling factor and mean H is 0.82.</p> <p>The strongest test was to shrink the held-out diseased scans to the healthy scans’ width and run the identical pipeline. The trained model then called <strong>63 of 63 of them healthy</strong>. The perfect triage was the model recognizing the scanner.</p> <p><strong>Lesson #1:</strong> check acquisition confounds before claiming triage performance.</p> <h2 id="step-2-test-fairly">Step 2: test fairly</h2> <p>I added two more datasets, each from a single scanner:</p> <ul> <li> <strong>OCTDL</strong> (Optovue, 2,064 scans, 7 classes)</li> <li> <strong>Kermany</strong> (Spectralis, 2,401 scans)</li> </ul> <p>Every split is <strong>by patient</strong>, so no patient appears in both training and test. The hardest test is <strong>cross-scanner</strong>: train on Spectralis, test on Optovue.</p> <p>The evaluation setup:</p> <ul> <li> <strong>Classifier:</strong> logistic regression or LightGBM.</li> <li> <strong>Validation:</strong> patient-grouped 5-fold CV, repeated 3 times, with bootstrap 95% confidence intervals.</li> <li> <strong>Metric:</strong> balanced accuracy, because the classes are imbalanced.</li> </ul> <h2 id="step-3-physics-features-at-three-scales">Step 3: physics features at three scales</h2> <p>The new pipeline extracts <strong>171 features</strong> in three layers. Every one has a physical meaning.</p> <p><strong>1. Layer texture (111 features).</strong> First trace the inner retinal surface (ILM) and the RPE layer, then flatten the retina so the layers lie horizontal. Next, split it into four anatomical bands: inner retina, outer retina, RPE and choroid. In each band, measure Hurst roughness, KT-1 slope, coherence (how layered the texture is), lacunarity (gappiness) and entropy.</p> <p>On top of the texture, add direct disease measurements in micrometres:</p> <ul> <li>thickness and foveal dip</li> <li>macular hole gap</li> <li>fluid and bright foci</li> <li>RPE elevation</li> </ul> <p><strong>2. Echo physics, the NDT layer (46 features).</strong> Each image column is an A-scan, the same as an ultrasonic echo trace in materials testing. From it we compute:</p> <ul> <li> <strong>Attenuation:</strong> the Beer–Lambert slope of light loss with depth</li> <li> <strong>Interface contrast:</strong> echo strength at the ILM and RPE, an analogue of a reflection coefficient</li> <li> <strong>6 dB half-max sizing:</strong> the size of fluid pockets and holes</li> <li> <strong>Shadowing:</strong> signal loss behind bright reflectors</li> <li><strong>Speckle statistics</strong></li> </ul> <p>We removed the 8 features that turned out to be scanner-dependent.</p> <p><strong>3. Boundary geometry, the fractal layer (14 features).</strong> This treats the ILM and RPE as coastlines.</p> <h2 id="the-retina-as-a-coastline">The retina as a coastline</h2> <p>If z(x) is the height of a boundary at column x, a self-affine curve satisfies</p> <p style="text-align:center; font-size:1.15rem;"><strong>E</strong> |z(x + d) − z(x)| ∝ d<sup>H</sup>  ⇒  <strong>D = 2 − H</strong></p> <p>Here H is the Hurst exponent and D is the fractal dimension: 1 for a straight line, about 1.25 for Britain’s coastline, and 2 for a curve that fills the plane.</p> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/blog/retina/coastline-480.webp 480w,/assets/img/blog/retina/coastline-800.webp 800w,/assets/img/blog/retina/coastline-1400.webp 1400w," type="image/webp" sizes="95vw"></source> <img src="/assets/img/blog/retina/coastline.png" class="img-fluid rounded z-depth-1" width="100%" height="auto" data-zoomable="" loading="lazy" onerror="this.onerror=null; document.querySelectorAll('.responsive-img-srcset').forEach(function (n) { n.remove(); });"> </picture> <figcaption class="caption">A healthy ILM (D 1.09, smooth foveal pit) vs epiretinal membrane (D 1.22, fine wrinkles).</figcaption> </figure> <p>Before trusting the estimators, we checked them on shapes with known answers:</p> <ul> <li> <strong>Sierpiński carpet:</strong> measured 1.8928, true value log 8 / log 3 = 1.8928</li> <li> <strong>Koch curve:</strong> measured 1.267, true value 1.262</li> <li> <strong>Boundary Hurst estimator:</strong> within ±0.01 on synthetic Brownian profiles</li> </ul> <p>The same checks confirmed the resampling confound: 1.32× upsampling raises the original engine’s H by up to 0.04.</p> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/blog/retina/known-fractals-480.webp 480w,/assets/img/blog/retina/known-fractals-800.webp 800w,/assets/img/blog/retina/known-fractals-1400.webp 1400w," type="image/webp" sizes="95vw"></source> <img src="/assets/img/blog/retina/known-fractals.png" class="img-fluid rounded z-depth-1" width="100%" height="auto" data-zoomable="" loading="lazy" onerror="this.onerror=null; document.querySelectorAll('.responsive-img-srcset').forEach(function (n) { n.remove(); });"> </picture> <figcaption class="caption">Validating the estimators on known fractals.</figcaption> </figure> <h2 id="results">Results</h2> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/blog/retina/results-480.webp 480w,/assets/img/blog/retina/results-800.webp 800w,/assets/img/blog/retina/results-1400.webp 1400w," type="image/webp" sizes="95vw"></source> <img src="/assets/img/blog/retina/results.png" class="img-fluid rounded z-depth-1" width="100%" height="auto" data-zoomable="" loading="lazy" onerror="this.onerror=null; document.querySelectorAll('.responsive-img-srcset').forEach(function (n) { n.remove(); });"> </picture> <figcaption class="caption">Balanced accuracy on every task: the original engine, our physics features, and a ResNet-18.</figcaption> </figure> <table> <thead> <tr> <th>Task</th> <th style="text-align: right">Chance</th> <th style="text-align: right">Physics features (ours)</th> </tr> </thead> <tbody> <tr> <td>OCTID: CSR / DR / MH</td> <td style="text-align: right">0.33</td> <td style="text-align: right"><strong>0.868</strong></td> </tr> <tr> <td>OCTDL: 7 classes</td> <td style="text-align: right">0.14</td> <td style="text-align: right"><strong>0.682</strong></td> </tr> <tr> <td>Kermany: CNV / DME / drusen</td> <td style="text-align: right">0.33</td> <td style="text-align: right"><strong>0.726</strong></td> </tr> <tr> <td>Spectralis → Optovue (cross-scanner)</td> <td style="text-align: right">0.33</td> <td style="text-align: right"> <strong>0.671</strong> (original engine 0.378)</td> </tr> </tbody> </table> <ul> <li> <strong>Beats the original engine everywhere:</strong> +0.13 to +0.36 balanced accuracy over the original engine on every task.</li> <li> <strong>Holds up across scanners:</strong> 0.671 balanced accuracy, and <strong>84%</strong> of healthy Optovue eyes recognized, after training only on Spectralis.</li> <li> <strong>NDT features help a little, and consistently:</strong> +0.01 to +0.04, positive in 22 of 24 paired tests.</li> <li> <strong>A CNN is still more accurate:</strong> a fine-tuned ResNet-18 on the same folds reaches 0.86–0.94.</li> </ul> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/blog/retina/cross-scanner-confusion-480.webp 480w,/assets/img/blog/retina/cross-scanner-confusion-800.webp 800w,/assets/img/blog/retina/cross-scanner-confusion-1400.webp 1400w," type="image/webp" sizes="95vw"></source> <img src="/assets/img/blog/retina/cross-scanner-confusion.png" class="img-fluid rounded z-depth-1" width="100%" height="auto" data-zoomable="" loading="lazy" onerror="this.onerror=null; document.querySelectorAll('.responsive-img-srcset').forEach(function (n) { n.remove(); });"> </picture> <figcaption class="caption">Trained on Spectralis, tested on Optovue.</figcaption> </figure> <h2 id="what-the-fractal-features-add-and-dont">What the fractal features add (and don’t)</h2> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/blog/retina/fractal-by-disease-480.webp 480w,/assets/img/blog/retina/fractal-by-disease-800.webp 800w,/assets/img/blog/retina/fractal-by-disease-1400.webp 1400w," type="image/webp" sizes="95vw"></source> <img src="/assets/img/blog/retina/fractal-by-disease.png" class="img-fluid rounded z-depth-1" width="100%" height="auto" data-zoomable="" loading="lazy" onerror="this.onerror=null; document.querySelectorAll('.responsive-img-srcset').forEach(function (n) { n.remove(); });"> </picture> <figcaption class="caption">ILM fractal dimension and RPE roughness by disease.</figcaption> </figure> <ul> <li> <strong>Meaningful:</strong> epiretinal membrane has the highest ILM fractal dimension (1.16 vs 1.10 healthy). AMD and vascular occlusions roughen the RPE (4–5 vs 2.7 µm per column).</li> <li> <strong>Scanner-stable:</strong> between healthy eyes on the two scanners, the effect size is |d| ≤ 0.58. The strongest NDT contrasts are about 1.5.</li> <li> <strong>Redundant for accuracy:</strong> on their own they reach 2–3× chance (0.672 on OCTID, 0.533 across scanners). Added on top of texture and NDT features, they change accuracy by −0.015 to +0.020, which isn’t significant.</li> </ul> <p>They <strong>explain</strong>; they don’t <strong>add accuracy</strong>.</p> <h2 id="take-aways">Take-aways</h2> <ol> <li> <strong>Check acquisition confounds first.</strong> A perfect score is a reason to look harder at the data.</li> <li> <strong>Physics at three scales</strong> gives 0.68–0.87 balanced accuracy, and a clinician can read every feature.</li> <li> <strong>Fractal dimension is a validated, scanner-stable biomarker</strong> for ERM and AMD, but redundant for accuracy.</li> <li> <strong>A CNN is more accurate.</strong> Physics features fit best as the <em>explanation layer</em> of a hybrid system, not as a replacement.</li> </ol> <p><strong>Limitations:</strong></p> <ul> <li>The boundary tracer is simple and jumps at some foveal pits.</li> <li>The lateral pixel spacing is assumed, not read from the scanner.</li> <li>Only a subset of Kermany was used.</li> </ul> <p>📄 <a href="/assets/pdf/posters/retinal-diagnostics-poster.pdf">Poster (PDF)</a> · 💻 <a href="https://github.com/Tanushka-Sonde/Multi-Parametric-Retinal-Diagnostics" rel="external nofollow noopener" target="_blank">Code on GitHub</a> · 🗂️ <a href="/projects/retinal-diagnostics/">Project page</a></p> <h3 id="references">References</h3> <ol> <li>Banerjee, Sarkar, Munshi, <em>Multi-Parametric Retinal Diagnostics: A Deterministic Physics-Based Engine for Tomographic Classification.</em> </li> <li>Athe, Shakya, Munshi, Luke, Mewes, <em>Flow Meas. Instrum.</em> 33, 2013.</li> <li>Mandelbrot, <em>The Fractal Geometry of Nature</em>, 1982.</li> <li>Kermany et al., <em>Cell</em> 172(5), 2018.</li> <li>Kulyabin et al., OCTDL, <em>Sci. Data</em> 11, 2024.</li> <li>Gholami et al., OCTID, arXiv:1812.07056.</li> </ol> </div> </article> <br> <hr> <br> <h2 class="text-3xl font-semibold mb-4 mt-12">Enjoy Reading This Article?</h2> <p class="mb-2">Here are some more articles you might like to read next:</p> <ul class="list-disc pl-7 my-3 space-y-2 marker:text-[var(--global-theme-color)]"> <li class="leading-relaxed"> <a class="underline decoration-1 hover:text-[var(--global-hover-color)]" href="/blog/2026/paged-kv-cache-from-scratch/">Building a vLLM-style paged KV cache from scratch</a> </li> <li class="leading-relaxed"> <a class="underline decoration-1 hover:text-[var(--global-hover-color)]" href="/blog/2026/alpha-tear-sheet/">Evaluating a signal, not a portfolio: building an alpha tear sheet</a> </li> <li class="leading-relaxed"> <a class="underline decoration-1 hover:text-[var(--global-hover-color)]" href="/blog/2026/why-my-backtest-sharpe-was-lying/">Why my backtest Sharpe was lying</a> </li> <li class="leading-relaxed"> <a class="underline decoration-1 hover:text-[var(--global-hover-color)]" href="/blog/2026/teleoperating-manipulators-vision-gestures/">Teleoperating a robot arm with an ArUco marker and a pinch gesture</a> </li> </ul> </div> </div> </div> </div> <footer class="fixed-bottom" role="contentinfo"> <div class="container mt-0"> © Copyright 2026 Tanushka Anand Sonde. Built with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a>, hosted on <a href="https://pages.github.com/" rel="external nofollow noopener" target="_blank">GitHub Pages</a>. </div> </footer> <script>
+  window.alFolio = {
+    compatBootstrap: false
+  };
+</script> <script src="/assets/js/nav-toggle.js?v=141bd79a73ebc0f0b6ea58e440ae79fc"></script> <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script> <script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@5.0.0/imagesloaded.pkgd.min.js" integrity="sha256-htrLFfZJ6v5udOG+3kNLINIKh2gvoKqwEhHYfTTMICc=" crossorigin="anonymous"></script> <script defer src="/assets/js/masonry.js?v=e49affc7bd2646f6acdad1dbe02c2359" type="text/javascript"></script> <script src="/assets/js/tooltips-setup.js?v=fe487e99db6c43751e6e7bdb2d6a0611"></script> <script defer src="https://cdn.jsdelivr.net/npm/tocbot@4.36.4/dist/tocbot.min.js" integrity="sha256-lo/r+jQ81wWrxdIiiiEEd538z4+dTJTt+leOuAS7GCw=" crossorigin="anonymous"></script> <script src="/assets/js/no_defer.js?v=53b1b1a645525975c963ce8bf8bfefcf"></script> <script defer src="/assets/js/common.js?v=87baac90f765f2f3362dcf6aaf312a8a"></script> <script defer src="/assets/js/copy_code.js?v=c8a01c11a92744d44b093fc3bda915df" type="text/javascript"></script> <script defer src="/assets/js/jupyter_new_tab.js?v=896d254890d9b47f0281f63bfccf0dee"></script> <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script> <script defer src="/assets/al_img_tools/js/zoom.js"></script> <script src="https://cdn.jsdelivr.net/npm/vanilla-back-to-top@7.2.1/dist/vanilla-back-to-top.min.js" integrity="sha256-uMJJ3EoTyfRBoTbR+lrfu1uRQ87RZG8AR3cVNuQVeFg=" crossorigin="anonymous"></script> <script>
+    addBackToTop();
+  </script> <script type="module" src="/assets/al_search/js/search/ninja-keys.min.js"></script> <ninja-keys hidebreadcrumbs noautoloadmdicons placeholder="Type to start searching"></ninja-keys> <script src="/assets/al_search/js/search-setup.js"></script> <script>
+// get the ninja-keys element
+const ninja = document.querySelector('ninja-keys');
+
+// add the home and posts menu items
+ninja.data = [{
+    id: "nav-about",
+    title: "About",
+    section: "Navigation",
+    handler: () => {
+      window.location.href = "/";
+    },
+  },{id: "nav-projects",
+          title: "Projects",
+          description: "Research, internship, and personal projects, grouped by area.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/projects/";
+          },
+        },{id: "nav-blog",
+          title: "Blog",
+          description: "",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/blog/";
+          },
+        },{id: "nav-posters",
+          title: "Posters",
+          description: "Posters and presentation slides from my projects.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/posters/";
+          },
+        },{id: "nav-cv",
+          title: "CV",
+          description: "",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/cv/";
+          },
+        },{id: "post-building-a-vllm-style-paged-kv-cache-from-scratch",
+        
+          title: "Building a vLLM-style paged KV cache from scratch",
+        
+        description: "What makes LLM serving fast, rebuilt on a tiny GPT in plain PyTorch, with every optimization measured.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/paged-kv-cache-from-scratch/";
+          
+        },
+      },{id: "post-evaluating-a-signal-not-a-portfolio-building-an-alpha-tear-sheet",
+        
+          title: "Evaluating a signal, not a portfolio: building an alpha tear sheet",
+        
+        description: "IC, Newey-West t-stats, IC decay and quantile spreads, explained one plot at a time.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/alpha-tear-sheet/";
+          
+        },
+      },{id: "post-why-my-backtest-sharpe-was-lying",
+        
+          title: "Why my backtest Sharpe was lying",
+        
+        description: "A Sharpe of 0.39 that turned out to be hidden market beta, and the statistics I used to catch it, in plain English.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/why-my-backtest-sharpe-was-lying/";
+          
+        },
+      },{id: "post-when-100-accuracy-is-a-scanner-not-a-disease-physics-features-for-retinal-oct",
+        
+          title: "When 100% accuracy is a scanner, not a disease: physics features for retinal...",
+        
+        description: "Reproducing a physics-based OCT classifier, finding the confound behind its perfect triage, and building explainable features that hold up across scanners.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/retinal-oct-physics-features/";
+          
+        },
+      },{id: "post-teleoperating-a-robot-arm-with-an-aruco-marker-and-a-pinch-gesture",
+        
+          title: "Teleoperating a robot arm with an ArUco marker and a pinch gesture",
+        
+        description: "RealSense + ArUco for position, MediaPipe for the gripper, Mink IK in MuJoCo, and why the real arm jittered when the simulation didn&#39;t.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/teleoperating-manipulators-vision-gestures/";
+          
+        },
+      },{id: "news-joined-iitgn-robotics",
+          title: 'Joined IITGN Robotics.',
+          description: "",
+          section: "News",},{id: "news-research-intern-at-iitgn-robotics",
+          title: 'Research intern at IITGN Robotics.',
+          description: "",
+          section: "News",},{id: "news-summer-intern-at-ey-gds-mumbai-emerging-technologies-bfsi",
+          title: 'Summer intern at EY GDS Mumbai (Emerging Technologies, BFSI).',
+          description: "",
+          section: "News",},{id: "news-summer-intern-at-deloitte-india-technology-amp-transformation",
+          title: 'Summer intern at Deloitte India (Technology &amp;amp; Transformation).',
+          description: "",
+          section: "News",},{id: "news-started-research-on-sketch-based-camera-controlled-scene-generation-at-the-computer-vision-lab-iit-gandhinagar",
+          title: 'Started research on sketch-based, camera-controlled scene generation at the Computer Vision Lab, IIT...',
+          description: "",
+          section: "News",},{id: "projects-agentic-multimodal-rag-knowledge-assistant",
+          title: 'Agentic Multimodal RAG Knowledge Assistant',
+          description: "Self-correcting multi-agent LangGraph RAG with hybrid text and ColPali visual retrieval.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/agentic-multimodal-rag/";
+            },},{id: "projects-alpha-research-amp-backtesting-framework",
+          title: 'Alpha Research &amp;amp; Backtesting Framework',
+          description: "Quant research pipeline with LightGBM signals, purged walk-forward CV and a realistic backtester.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/alpha-research-framework/";
+            },},{id: "projects-arm-manipulator-teleoperation-using-computer-vision",
+          title: 'Arm Manipulator Teleoperation using Computer Vision',
+          description: "Vision-based Cartesian teleoperation of the Addverb Heal arm with RealSense, ArUco and MuJoCo.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/arm-teleoperation-cv/";
+            },},{id: "projects-box-office-bomb-data-pipeline",
+          title: 'Box Office Bomb Data Pipeline',
+          description: "Scraped, validated and enriched 138 box-office bomb records into an analytics-ready dataset.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/box-office-bomb-pipeline/";
+            },},{id: "projects-city-scale-3d-reconstruction-structure-from-motion-from-tourist-photos",
+          title: 'City-Scale 3D Reconstruction: Structure from Motion from Tourist Photos',
+          description: "City-scale Structure-from-Motion from tourist photos, with 9 core algorithms implemented from scratch.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/city-scale-sfm/";
+            },},{id: "projects-decision-tree-based-human-activity-recognition-har",
+          title: 'Decision Tree Based Human Activity Recognition (HAR)',
+          description: "Decision tree implemented from scratch for human activity recognition on UCI-HAR accelerometer data.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/decision-tree-har/";
+            },},{id: "projects-deep-learning-optimizers-loss-landscapes-amp-regularization",
+          title: 'Deep Learning Optimizers, Loss Landscapes &amp;amp; Regularization',
+          description: "Optimizers on classic loss surfaces, Adam learning-rate schedules, and dropout on FashionMNIST.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/dl-optimizers-loss-landscapes/";
+            },},{id: "projects-deep-learning-and-regularization-experiments",
+          title: 'Deep Learning and Regularization Experiments',
+          description: "Next-word prediction MLP, a regularization study on make_moons, and MLP/CNN models on MNIST.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/dl-regularization-experiments/";
+            },},{id: "projects-prompted-drywall-defect-segmentation-using-clip-conditioned-models",
+          title: 'Prompted Drywall Defect Segmentation using CLIP-Conditioned Models',
+          description: "Text-prompted crack and taping-area segmentation with a from-scratch CLIP-UNet using FiLM conditioning.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/drywall-defect-segmentation/";
+            },},{id: "projects-local-rag-based-policy-assistant",
+          title: 'Local RAG-Based Policy Assistant',
+          description: "Fully local RAG chat system for HR policy queries using Ollama and ChromaDB.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/local-rag-policy-assistant/";
+            },},{id: "projects-multi-scale-template-and-feature-matching-for-scene-search",
+          title: 'Multi-Scale Template and Feature Matching for Scene Search',
+          description: "From-scratch filtering, multiscale NCC template matching, and Harris/DoG feature matching.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/multi-scale-template-matching/";
+            },},{id: "projects-optimization-and-matrix-factorization-experiments",
+          title: 'Optimization and Matrix Factorization Experiments',
+          description: "Gradient descent variants, feature scaling, autoregressive forecasting, and low-rank matrix factorization.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/optimization-matrix-factorization/";
+            },},{id: "projects-paged-kv-cache-amp-continuous-batching-inference-engine",
+          title: 'Paged KV Cache &amp;amp; Continuous Batching Inference Engine',
+          description: "vLLM-style paged KV cache and continuous batching scheduler built from scratch in PyTorch.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/paged-kv-cache-inference-engine/";
+            },},{id: "projects-multi-parametric-retinal-diagnostics-reproduction-and-extension",
+          title: 'Multi-Parametric Retinal Diagnostics: Reproduction and Extension',
+          description: "Reproduced a physics-based OCT classifier and stress-tested it with cross-scanner validation on 3 datasets.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/retinal-diagnostics/";
+            },},{id: "projects-sift-guided-optical-flow-for-lunar-descent-trajectory-reconstruction",
+          title: 'SIFT-Guided Optical Flow for Lunar Descent Trajectory Reconstruction',
+          description: "Reconstructed a metric 3D lander trajectory from Chang&#39;e-5 descent frames with SIFT-seeded KLT tracking.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/sift-optical-flow-lunar-descent/";
+            },},{id: "projects-sketchworld-camera-controlled-scene-generation-from-sketches",
+          title: 'SketchWorld: Camera-Controlled Scene Generation from Sketches',
+          description: "Camera-controlled next-view forecasting with SCEdit tuners on a frozen Stable Diffusion 1.5.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/sketchworld/";
+            },},{id: "projects-small-multimodal-experiments-clip-loss-to-vlm-adaptation",
+          title: 'Small Multimodal Experiments: CLIP Loss to VLM Adaptation',
+          description: "Symmetric CLIP loss from scratch, semantic image retrieval, and SmolVLM connector fine-tuning.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/small-multimodal-experiments/";
+            },},{id: "projects-smart-labeling-pipeline-for-scalable-data-annotation",
+          title: 'Smart Labeling Pipeline for Scalable Data Annotation',
+          description: "Labeling pipeline combining human annotation, Snorkel weak supervision, active learning and LLMs.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/smart-labeling-pipeline/";
+            },},{id: "projects-invisible-svd-based-digital-image-watermarking-system",
+          title: 'Invisible SVD-Based Digital Image Watermarking System',
+          description: "Invisible QR-code watermarking with SVD implemented from scratch, plus robustness benchmarks.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/svd-image-watermarking/";
+            },},{id: "projects-small-models-and-attention-transformers-from-scratch",
+          title: 'Small Models and Attention: Transformers from Scratch',
+          description: "Label smoothing, causal self-attention and a minimal Vision Transformer, built from first principles.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/transformers-from-scratch/";
+            },},{id: "projects-vision-language-policy-learning-for-robotic-manipulation",
+          title: 'Vision-Language Policy Learning for Robotic Manipulation',
+          description: "Sim-to-real pipeline and dataset for OpenVLA-7B on a Franka FR3 (fine-tuning not completed).",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/vision-language-policy-learning/";
+            },},{
+        id: 'social-email',
+        title: 'email',
+        section: 'Socials',
+        handler: () => {
+          window.open("mailto:%74%61%6E%75%73%68%6B%61.%73%6F%6E%64%65@%69%69%74%67%6E.%61%63.%69%6E", "_blank");
+        },
+      },{
+        id: 'social-github',
+        title: 'GitHub',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://github.com/Tanushka-Sonde", "_blank");
+        },
+      },{
+        id: 'social-linkedin',
+        title: 'LinkedIn',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://www.linkedin.com/in/tanushka-sonde-97a01b28a", "_blank");
+        },
+      },{
+        id: 'social-cv',
+        title: 'CV',
+        section: 'Socials',
+        handler: () => {
+          window.open("/assets/pdf/Tanushka_Sonde_CV.pdf", "_blank");
+        },
+      },{
+        id: 'social-rss',
+        title: 'RSS Feed',
+        section: 'Socials',
+        handler: () => {
+          window.open("/feed.xml", "_blank");
+        },
+      },{
+      id: 'light-theme',
+      title: 'Change theme to light',
+      description: 'Change the theme of the site to Light',
+      section: 'Theme',
+      handler: () => {
+        setThemeSetting("light");
+      },
+    },
+    {
+      id: 'dark-theme',
+      title: 'Change theme to dark',
+      description: 'Change the theme of the site to Dark',
+      section: 'Theme',
+      handler: () => {
+        setThemeSetting("dark");
+      },
+    },
+    {
+      id: 'system-theme',
+      title: 'Use system default theme',
+      description: 'Change the theme of the site to System Default',
+      section: 'Theme',
+      handler: () => {
+        setThemeSetting("system");
+      },
+    },];
+
+</script> <script src="/assets/al_search/js/shortcut-key.js"></script> </body> </html>
