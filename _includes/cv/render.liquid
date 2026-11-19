@@ -154,6 +154,13 @@
               {% if section_title == 'Education' %}
                 {% assign entries = section_entries | al_cv_sort_by_date %}
                 {% include cv/education.liquid %}
+              {% elsif section_title == 'Research Experience' or section_title == 'Internships' %}
+                {% comment %} LOCAL OVERRIDE: resume-style sections rendered like Experience, in YAML order. {% endcomment %}
+                {% assign entries = section_entries %}
+                {% include cv/experience.liquid %}
+              {% elsif section_title == 'Course Projects' %}
+                {% assign entries = section_entries %}
+                {% include cv/projects.liquid %}
               {% elsif section_title == 'Awards' or section_title == 'Honors and Awards' %}
                 {% assign entries = section_entries %}
                 {% include cv/awards.liquid %}
